@@ -57,59 +57,71 @@ function toggleProposal(proposalId) {
 let currentDate = new Date();
 const events = {
     // Enero
-    '2026-01-01': { type: 'holiday', title: 'Año Nuevo', description: '¡Feliz Año nuevo a toda la comunidad claretiana!' },
+'2026-01-01': { type: 'holiday', title: 'Año Nuevo', description: '¡Feliz Año nuevo a toda la comunidad claretiana!' },
+'2026-01-04': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Guadalupe Vaccaro' },
+'2026-01-10': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Tomás Bordenave' },
+'2026-01-24': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lourdes Ragazzini' },
 
-    // Febrero
-    '2026-02-16': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
-    '2026-02-17': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
+// Febrero
+'2026-02-16': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
+'2026-02-17': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
 
-    // Marzo
-    '2025-03-15': { type: 'meeting', title: 'Reunión Centro', description: '17:00 - Aula 12' },
-    '2025-03-20': { type: 'cultural', title: 'Semana de la Dulzura', description: 'Stands y actividades' },
-    '2025-03-25': { type: 'school', title: 'Cine con pochoclos', description: '20:00 - Salón de actos' },
-    '2026-03-24': { type: 'holiday', title: 'Día de la Memoria', description: 'Día Nacional de la Memoria por la Verdad y la Justicia' },
+// Marzo
+'2026-03-24': { type: 'holiday', title: 'Día de la Memoria', description: 'Día Nacional de la Memoria por la Verdad y la Justicia' },
+'2026-03-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lucía Areco' },
 
-    // Abril
-    '2026-04-01': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Julián Leal (6to E&C)' },
-    '2026-04-02': { type: 'holiday', title: 'Malvinas', description: 'Día del Veterano y de los Caídos en la Guerra de Malvinas' },
-    '2026-04-03': { type: 'holiday', title: 'Viernes Santo', description: 'Conmemoración religiosa' },
+// Abril
+'2026-04-01': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Julián Leal (6to E&C)' },
+'2026-04-02': { type: 'holiday', title: 'Malvinas', description: 'Día del Veterano y de los Caídos en la Guerra de Malvinas' },
+'2026-04-03': { type: 'holiday', title: 'Viernes Santo', description: 'Conmemoración religiosa' },
+'2026-04-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Jazmín Begue' },
+'2026-04-28': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Ana Heredia' },
 
-    // Mayo
-    '2026-05-01': { type: 'holiday', title: 'Día del Trabajador', description: 'Feriado nacional' },
-    '2026-05-25': { type: 'holiday', title: 'Revolución de Mayo', description: 'Día de la Patria' },
+// Mayo
+'2026-05-01': { type: 'holiday', title: 'Día del Trabajador', description: 'Feriado nacional' },
+'2026-05-25': { type: 'holiday', title: 'Revolución de Mayo', description: 'Día de la Patria' },
 
-    // Junio
-    '2026-06-11': { type: 'event', title: 'Inicio del Mundial 2026', description: '¡Vamos todos a apoyar el mundial 2026!' },
-    '2026-06-17': { type: 'holiday', title: 'Gral. Güemes', description: 'Paso a la Inmortalidad del General Martín Miguel de Güemes' },
-    '2026-06-20': { type: 'holiday', title: 'Belgrano', description: 'Paso a la Inmortalidad del Gral. Manuel Belgrano' },
+// Junio
+'2026-06-11': { type: 'event', title: 'Inicio del Mundial 2026', description: '¡Vamos todos a apoyar el mundial 2026!' },
+'2026-06-16': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Isabella Anthonioz' },
+'2026-06-17': { type: 'holiday', title: 'Gral. Güemes', description: 'Paso a la Inmortalidad del General Martín Miguel de Güemes' },
+'2026-06-20': { type: 'holiday', title: 'Belgrano', description: 'Paso a la Inmortalidad del Gral. Manuel Belgrano' },
 
-    // Julio
-    '2026-07-09': { type: 'holiday', title: 'Independencia', description: 'Día de la Independencia Argentina' },
+// Julio
+'2026-07-09': { type: 'holiday', title: 'Independencia', description: 'Día de la Independencia Argentina' },
 
-    // Agosto
-    '2026-08-17': { type: 'holiday', title: 'San Martín', description: 'Paso a la Inmortalidad del Gral. José de San Martín' },
+// Agosto
+'2026-08-17': { type: 'holiday', title: 'San Martín', description: 'Paso a la Inmortalidad del Gral. José de San Martín' },
 
-    // Octubre 2025 (del calendario subido)
-    '2025-10-02': { type: 'holiday', title: 'Día del Perdón', description: 'Conmemoración religiosa' },
-    '2025-10-10': { type: 'holiday', title: 'Día de la Raza', description: 'Traslado del 12/10 - Diversidad Cultural' },
+// Septiembre
+'2026-09-12': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Leticia Bee Sellares' },
+'2026-09-23': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Cande Griffo' },
 
-    // Octubre 2026 (general)
-    '2026-10-12': { type: 'holiday', title: 'Diversidad Cultural', description: 'Día del Respeto a la Diversidad Cultural' },
+// Octubre 2025 (del calendario subido)
+'2025-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
+'2025-10-02': { type: 'holiday', title: 'Día del Perdón', description: 'Conmemoración religiosa' },
+'2025-10-10': { type: 'holiday', title: 'Día de la Raza', description: 'Traslado del 12/10 - Diversidad Cultural' },
 
-    // Noviembre 2025
-    '2025-11-21': { type: 'holiday', title: 'Feriado turístico', description: 'Día no laborable con fines turísticos' },
-    '2025-11-24': { type: 'holiday', title: 'Soberanía Nacional', description: 'Traslado del 20/11 - Día de la Soberanía Nacional' },
+// Octubre 2026 (general + cumple)
+'2026-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
+'2026-10-12': { type: 'holiday', title: 'Diversidad Cultural', description: 'Día del Respeto a la Diversidad Cultural' },
 
-    // Noviembre 2026
-    '2026-11-20': { type: 'holiday', title: 'Soberanía Nacional', description: 'Día de la Soberanía Nacional' },
+// Noviembre 2025
+'2025-11-21': { type: 'holiday', title: 'Feriado turístico', description: 'Día no laborable con fines turísticos' },
+'2025-11-24': { type: 'holiday', title: 'Soberanía Nacional', description: 'Traslado del 20/11 - Día de la Soberanía Nacional' },
 
-    // Diciembre 2025
-    '2025-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
-    '2025-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' },
+// Noviembre 2026
+'2026-11-20': { type: 'holiday', title: 'Soberanía Nacional', description: 'Día de la Soberanía Nacional' },
 
-    // Diciembre 2026
-    '2026-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
-    '2026-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' }
+// Diciembre 2025
+'2025-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
+'2025-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' },
+
+// Diciembre 2026
+'2026-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
+'2026-12-15': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Valentina Racca' },
+'2026-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' }
+
 };
 
 
