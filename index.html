@@ -5,103 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETHNOS - Centro de Estudiantes 2025-2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'ethnos-blue': '#2563eb',
-                        'ethnos-orange': '#f97316',
-                        'ethnos-gray': '#6b7280'
+                        'ethnos-red': '#852741',
+                        'ethnos-blue': '#0e2b67',
+                        'ethnos-gray': '#acb0b3',
+                        'ethnos-black': '#00000',
                     }
                 }
             }
         }
     </script>
-    <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        }
-        
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.8s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .pulse-button {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-
-        
-        .proposal-card {
-            transition: all 0.3s ease;
-        }
-        
-        .proposal-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .calendar-day {
-            transition: all 0.2s ease;
-        }
-        
-        .calendar-day:hover {
-            transform: scale(1.1);
-        }
-        
-        .instagram-post {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        }
-    </style>
 </head>
 <body class="bg-gray-50 font-sans transition-colors duration-300">
-    <!-- Navigation -->
+    
     <nav class="bg-white shadow-lg sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <span class="text-2xl font-bold text-ethnos-blue">ETHNOS</span>
-                    </div>
+                    <a href="index.html" class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img src="assets/logo.png" alt="ETHNOS logo" class="h-12 w-12 object-contain rounded-md" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-xl font-bold text-ethnos-blue">ETHNOS</span>
+                        </div>
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <button onclick="showPage('inicio')" class="nav-btn text-ethnos-blue bg-blue-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</button>
-                        <button onclick="showPage('quienes-somos')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Quiénes Somos</button>
-                        <button onclick="showPage('objetivo')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Objetivo</button>
-                        <button onclick="showPage('propuestas')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Propuestas</button>
-                        <button onclick="showPage('calendario')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Calendario</button>
-                        <button onclick="showPage('redes')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Redes</button>
-
-                        <button onclick="showPage('extras')" class="nav-btn text-ethnos-gray hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Extras</button>
+                        <button onclick="showPage('inicio', event)" class="nav-btn text-ethnos-blue bg-blue-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</button>
+                        <button onclick="showPage('calendario', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Calendario</button>
+                        <button onclick="showPage('identidad', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Identidad</button>
+                        <button onclick="showPage('redes', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Redes</button>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-ethnos-gray hover:text-ethnos-blue">
+                    <button onclick="toggleMobileMenu()" class="text-ethnos-black hover:text-ethnos-blue">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -110,171 +73,120 @@
             </div>
         </div>
         
-        <!-- Mobile menu -->
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t transition-colors duration-300">
-                <button onclick="showPage('inicio')" class="mobile-nav-btn block px-3 py-2 text-ethnos-blue bg-blue-50 rounded-md text-base font-medium w-full text-left">Inicio</button>
-                <button onclick="showPage('quienes-somos')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Quiénes Somos</button>
-                <button onclick="showPage('objetivo')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Objetivo</button>
-                <button onclick="showPage('propuestas')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Propuestas</button>
-                <button onclick="showPage('calendario')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Calendario</button>
-                <button onclick="showPage('redes')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Redes</button>
-
-                <button onclick="showPage('extras')" class="mobile-nav-btn block px-3 py-2 text-ethnos-gray hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Extras</button>
+                <button onclick="showPage('inicio', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-blue bg-blue-50 rounded-md text-base font-medium w-full text-left">Inicio</button>
+                <button onclick="showPage('calendario', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Calendario</button>
+                <button onclick="showPage('identidad', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Identidad</button>
+                <button onclick="showPage('redes', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Redes</button>
+                 
             </div>
         </div>
     </nav>
 
-    <!-- Page Content -->
     <div id="page-content">
-        
-        <!-- Página 1: Inicio -->
+    
         <div id="inicio" class="page-section">
-            <div class="gradient-bg min-h-screen flex items-center">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                    <div class="text-center fade-in">
-                        <!-- Logo SVG -->
-                        <div class="mb-8">
-                            <svg class="mx-auto h-32 w-32" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="100" cy="100" r="90" fill="white" stroke="#f97316" stroke-width="4"/>
-                                <circle cx="100" cy="100" r="70" fill="#2563eb"/>
-                                <text x="100" y="110" text-anchor="middle" fill="white" font-size="24" font-weight="bold" font-family="Arial">E</text>
-                                <circle cx="70" cy="80" r="8" fill="#f97316"/>
-                                <circle cx="130" cy="80" r="8" fill="#f97316"/>
-                                <circle cx="70" cy="120" r="8" fill="#f97316"/>
-                                <circle cx="130" cy="120" r="8" fill="#f97316"/>
-                            </svg>
+            
+            <div class="gradient-bg min-h-screen flex flex-col items-center justify-center text-center fade-in p-4">
+                <div class="mb-8">
+                    <img src="assets/logo.png" alt="ETHNOS logo" class="mx-auto h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 object-contain rounded-md" loading="lazy" onerror="this.style.display='none'">
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold text-grey mb-6">ETHNOS</h1>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-ethnos-black mb-6">¿Quiénes Somos?</h2>
+                    <p class="text-lg text-ethnos-black mb-8">Un centro de estudiantes es el órgano de representación de todos los alumnos del colegio. Su función principal es ser la voz de los estudiantes ante las autoridades y trabajar para mejorar la vida escolar de toda la comunidad educativa.</p>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-12">Nuestro Equipo</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
+                        <div class="bg-gradient-to-br from-ethnos-blue to-blue-600 rounded-xl p-6 text-white text-center hover-lift">
+                            <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-ethnos-blue">FP</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Felipe Potkova</h4>
+                            <p class="text-blue-100 font-medium">Presidente</p>
                         </div>
-                        
-                        <h1 class="text-6xl md:text-8xl font-bold text-white mb-6">ETHNOS</h1>
-                        <p class="text-xl md:text-2xl text-blue-100 mb-4 font-medium">Unión y convivencia con el colegio</p>
-                        <p class="text-lg text-blue-200 mb-12 max-w-2xl mx-auto">ETHNOS significa pueblo y comunidad, refleja unión y fuerza. Somos la lista que representa a todos los estudiantes con cercanía y confianza.</p>
-                        
-                        <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-                            <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="pulse-button bg-ethnos-orange hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover-lift inline-flex items-center">
-                                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                                Seguinos en Instagram
-                            </button>
-                            <button onclick="showPage('quienes-somos')" class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover-lift">
-                                Conocé más sobre nosotros
-                            </button>
+                        <div class="bg-gradient-to-br from-ethnos-gray to-ethnos-blue rounded-xl p-6 text-white text-center hover-lift">
+                            <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-ethnos-gray">AH</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Ana Heredia</h4>
+                            <p class="text-red-100 font-medium">Vicepresidente</p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-ethnos-blue">📝</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Actas</h4>
+                            <p class="text-ethnos-black">Isabella Anthonioz</p>
+                            <p class="text-ethnos-black">Jazmín Begue</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-green-600">💰</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Finanzas</h4>
+                            <p class="text-ethnos-black">Candelaria Griffo</p>
+                            <p class="text-ethnos-black">Pablo Azzolini</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-purple-600">📢</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Difusión</h4>
+                            <p class="text-ethnos-black">Leticia Bee Sellares</p>
+                            <p class="text-ethnos-black">Trinidad Ferreyra</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-pink-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-pink-600">🎭</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Cultura</h4>
+                            <p class="text-ethnos-black">Guadalupe Vaccaro</p>
+                            <p class="text-ethnos-black">Lucía Areco</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-red-600">⚽</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Deportes</h4>
+                            <p class="text-ethnos-black">Tomás Bordenave</p>
+                            <p class="text-ethnos-black">Uma Repetti</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-yellow-600">🙏</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Pastoral</h4>
+                            <p class="text-ethnos-black">Valentina Racca</p>
+                            <p class="text-ethnos-black">Lourdes Ragazzini</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Página 2: Quiénes Somos -->
-        <div id="quienes-somos" class="page-section hidden">
-            <div class="bg-white py-20 transition-colors duration-300">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¿Quiénes Somos?</h2>
-                        <div class="max-w-4xl mx-auto">
-                            <p class="text-lg text-ethnos-gray mb-8">Un centro de estudiantes es el órgano de representación de todos los alumnos del colegio. Su función principal es ser la voz de los estudiantes ante las autoridades y trabajar para mejorar la vida escolar de toda la comunidad educativa.</p>
-                            <p class="text-lg text-ethnos-gray mb-8"><strong>ETHNOS</strong> es un nombre corto, fuerte y fácil de recordar que representa comunidad y unión. Elegimos este nombre porque refleja perfectamente nuestros valores: trabajar juntos como un pueblo unido para lograr objetivos comunes.</p>
-                        </div>
-                    </div>
-
-                    <div class="mb-16">
-                        <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-12">Nuestro Equipo</h3>
-                        
-                        <!-- Presidente y Vicepresidente -->
-                        <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-                            <div class="bg-gradient-to-br from-ethnos-blue to-blue-600 rounded-xl p-6 text-white text-center hover-lift">
-                                <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-2xl font-bold text-ethnos-blue">FP</span>
-                                </div>
-                                <h4 class="text-xl font-bold mb-2">Felipe Potkova</h4>
-                                <p class="text-blue-100 font-medium">Presidente</p>
-                            </div>
-                            <div class="bg-gradient-to-br from-ethnos-orange to-orange-600 rounded-xl p-6 text-white text-center hover-lift">
-                                <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-2xl font-bold text-ethnos-orange">AH</span>
-                                </div>
-                                <h4 class="text-xl font-bold mb-2">Ana Heredia</h4>
-                                <p class="text-orange-100 font-medium">Vicepresidente</p>
-                            </div>
-                        </div>
-
-                        <!-- Secretarías -->
-                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-ethnos-blue">📝</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Actas</h4>
-                                <p class="text-ethnos-gray">Isabella Anthonioz</p>
-                                <p class="text-ethnos-gray">Jazmín Begue</p>
-                            </div>
-                            
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-green-600">💰</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Finanzas</h4>
-                                <p class="text-ethnos-gray">Candelaria Griffo</p>
-                                <p class="text-ethnos-gray">Pablo Azzolini</p>
-                            </div>
-                            
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-purple-600">📢</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Difusión</h4>
-                                <p class="text-ethnos-gray">Leticia Bee Sellares</p>
-                                <p class="text-ethnos-gray">Trinidad Ferreyra</p>
-                            </div>
-                            
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-pink-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-pink-600">🎭</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Cultura</h4>
-                                <p class="text-ethnos-gray">Guadalupe Vaccaro</p>
-                                <p class="text-ethnos-gray">Lucía Areco</p>
-                            </div>
-                            
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-red-600">⚽</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Deportes</h4>
-                                <p class="text-ethnos-gray">Tomás Bordenave</p>
-                                <p class="text-ethnos-gray">Uma Repetti</p>
-                            </div>
-                            
-                            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
-                                <div class="w-16 h-16 bg-yellow-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <span class="text-lg font-bold text-yellow-600">🙏</span>
-                                </div>
-                                <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Pastoral</h4>
-                                <p class="text-ethnos-gray">Valentina Racca</p>
-                                <p class="text-ethnos-gray">Lourdes Ragazzini</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Página 3: Objetivo -->
-        <div id="objetivo" class="page-section hidden">
-            <div class="bg-gradient-to-br from-blue-50 to-orange-50 py-20 transition-colors duration-300">
+            <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20 transition-colors duration-300">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-12">Nuestro Objetivo</h2>
                         <div class="max-w-4xl mx-auto">
                             <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 hover-lift transition-colors duration-300">
                                 <div class="mb-8">
-                                    <svg class="mx-auto h-24 w-24 text-ethnos-orange" fill="currentColor" viewBox="0 0 24 24">
+                                    <svg class="mx-auto h-24 w-24 text-ethnos-red" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                                     </svg>
                                 </div>
-                                <blockquote class="text-xl md:text-2xl text-ethnos-gray leading-relaxed font-medium">
-                                    "Nuestro objetivo principal es la <span class="text-ethnos-blue font-bold">unión y convivencia</span> con el colegio. Queremos mejorar la <span class="text-ethnos-orange font-bold">comunicación entre cursos</span> y resolver problemáticas comunes, representando con <span class="text-ethnos-blue font-bold">cercanía y confianza</span> a todos los estudiantes."
+                                <blockquote class="text-xl md:text-2xl text-ethnos-black leading-relaxed font-medium">
+                                    "Nuestro objetivo principal es la <span class="text-ethnos-blue font-bold">unión y convivencia</span> con el colegio. Queremos mejorar la <span class="text-ethnos-gray font-bold">comunicación entre cursos</span> y resolver problemáticas comunes, representando con <span class="text-ethnos-blue font-bold">cercanía y confianza</span> a todos los estudiantes."
                                 </blockquote>
                             </div>
                             
@@ -284,322 +196,323 @@
                                         <span class="text-2xl">🤝</span>
                                     </div>
                                     <h3 class="text-xl font-bold text-ethnos-blue mb-2">Unión</h3>
-                                    <p class="text-ethnos-gray">Conectamos a todos los estudiantes como una verdadera comunidad</p>
+                                    <p class="text-ethnos-black">Conectamos a todos los estudiantes como una verdadera comunidad</p>
                                 </div>
                                 <div class="text-center">
-                                    <div class="w-16 h-16 bg-ethnos-orange rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-ethnos-gray rounded-full mx-auto mb-4 flex items-center justify-center">
                                         <span class="text-2xl">💬</span>
                                     </div>
                                     <h3 class="text-xl font-bold text-ethnos-blue mb-2">Comunicación</h3>
-                                    <p class="text-ethnos-gray">Facilitamos el diálogo entre cursos y con las autoridades</p>
+                                    <p class="text-ethnos-black">Facilitamos el diálogo entre cursos y con las autoridades</p>
                                 </div>
                                 <div class="text-center">
                                     <div class="w-16 h-16 bg-ethnos-blue rounded-full mx-auto mb-4 flex items-center justify-center">
                                         <span class="text-2xl">❤️</span>
                                     </div>
                                     <h3 class="text-xl font-bold text-ethnos-blue mb-2">Cercanía</h3>
-                                    <p class="text-ethnos-gray">Representamos con confianza y proximidad a cada estudiante</p>
+                                    <p class="text-ethnos-black">Representamos con confianza y proximidad a cada estudiante</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Página 4: Propuestas -->
-        <div id="propuestas" class="page-section hidden">
-            <div class="bg-gradient-to-br from-blue-50 via-white to-orange-50 py-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¡Nuestras Propuestas para Vos!</h2>
-                        <p class="text-lg text-ethnos-gray max-w-3xl mx-auto">Queremos hacer del colegio un lugar más divertido, inclusivo y lleno de oportunidades para todos los estudiantes</p>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Nuestras Propuestas ETHNOS</h2>
+                    <p class="text-lg text-ethnos-black max-w-3xl mx-auto">Creemos que el centro de estudiantes debe ser un espacio de participación, crecimiento y diálogo. Por eso, nuestras propuestas buscan mejorar la convivencia, fortalecer los vínculos y aportar al bienestar general de toda la comunidad educativa.</p>
+                </div>
+
+                <div class="space-y-12">
+                    <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                             <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-6">
+                                 <span class="text-3xl">📚</span>
+                             </div>
+                             <div>
+                                 <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Académicas</h3>
+                                 <p class="text-ethnos-black">Aprender con sentido, creatividad y trabajo colaborativo</p>
+                             </div>
+                         </div>
+                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div class="bg-blue-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">📖</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Feria del Libro y Apuntes</h4>
+                                 <p class="text-sm text-ethnos-black">Organizar una feria de libros y apuntes al inicio del ciclo lectivo para promover el intercambio de materiales entre cursos. Esto fomenta la solidaridad, el aprovechamiento de recursos y la economía circular dentro del colegio.</p>
+                             </div>
+                             <div class="bg-blue-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🌍</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Modelo de Naciones Unidas</h4>
+                                 <p class="text-sm text-ethnos-black">Realizar una actividad de simulación del <strong>Modelo ONU</strong> para alumnos de 4º y 5º año, integrando áreas como Historia y Geografía. Los estudiantes aprenderán a investigar, argumentar y expresarse ante un público, desarrollando pensamiento crítico y liderazgo.</p>
+                             </div>
+                             <div class="bg-blue-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🎓</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Charlas de Orientación Vocacional</h4>
+                                 <p class="text-sm text-ethnos-black">Invitar a profesionales y exalumnos para compartir experiencias sobre estudios y salidas laborales. El objetivo es acompañar a los alumnos en la elección de su futuro con información y contención.</p>
+                             </div>
+                         </div>
                     </div>
-
-                    <!-- Propuestas Principales -->
-                    <div class="space-y-12">
-                        <!-- Académicas -->
-                        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-6">
-                                    <span class="text-3xl">📚</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Académicas</h3>
-                                    <p class="text-ethnos-gray">Aprender de forma más divertida e interactiva</p>
-                                </div>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-6">
+                                <span class="text-3xl">🎭</span>
                             </div>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-blue-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">📖</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Feria del Libro</h4>
-                                    <p class="text-sm text-ethnos-gray">Proponemos implementar realizar  una <strong>Feria de libro</strong> a principio de año para intercambiar entre cursos los
-                                        apuntes de los años anteriores asi <strong>contribuimos a la reutilización de apuntes y poder adquirirlos a precios más baratos.</strong>, 
-                                        </p>
-                                </div>
-                                <div class="bg-blue-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🌍</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Modelo ONU</h4>
-                                    <p class="text-sm text-ethnos-gray">Proponemos implementar actividades para simular un <strong>Modelo Naciones Unidas</strong> para alumnos de 4º y 5º año. 
-                                        Estas experiencias integrarán materias del área de Sociales, como <em>Geografía</em> e <em>Historia</em>, 
-                                        y brindarán a los estudiantes la oportunidad de <strong>aprender a expresarse en público</strong>, 
-                                        <strong>exponer ideas</strong> y <strong>defender argumentos</strong> con confianza.
-                                    </p>
-
-                                </div>
-                                <div class="bg-blue-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🎓</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Charlas Vocacionales</h4>
-                                    <p class="text-sm text-ethnos-gray">Orientación para tu futuro profesional</p>
-                                </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Culturales</h3>
+                                <p class="text-ethnos-black">Fomentar la expresión artística y la identidad institucional</p>
                             </div>
                         </div>
-
-                        <!-- Deportivas -->
-                        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-6">
-                                    <span class="text-3xl">⚽</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Deportivas</h3>
-                                    <p class="text-ethnos-gray">Movete, divertite y hacé nuevos amigos</p>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-red-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🏐</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Torneos de Voley</h4>
-                                    <p class="text-sm text-ethnos-gray">Competencias inter-cursos súper divertidas</p>
-                                </div>
-                                <div class="bg-red-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">👨‍👦</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Papi Fútbol</h4>
-                                    <p class="text-sm text-ethnos-gray">Partidos con padres y familiares</p>
-                                </div>
-                                <div class="bg-red-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🏓</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Ping Pong & Metegol</h4>
-                                    <p class="text-sm text-ethnos-gray">Torneos en los recreos</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sociales -->
-                        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mr-6">
-                                    <span class="text-3xl">🎉</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Sociales</h3>
-                                    <p class="text-ethnos-gray">Celebremos juntos y creemos mejores vínculos</p>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-orange-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🌻</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Día de las Flores Amarillas</h4>
-                                    <p class="text-sm text-ethnos-gray">Celebración especial el 21 de septiembre</p>
-                                </div>
-                                <div class="bg-orange-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🧠</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Quiz por Curso</h4>
-                                    <p class="text-sm text-ethnos-gray">Competencias de conocimiento general</p>
-                                </div>
-                                <div class="bg-orange-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🏆</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Mejor Compañero</h4>
-                                    <p class="text-sm text-ethnos-gray">Reconocimiento a la amistad y compañerismo</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Culturales -->
-                        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-6">
-                                    <span class="text-3xl">🎭</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Culturales</h3>
-                                    <p class="text-ethnos-gray">Expresá tu creatividad y conocé otras culturas</p>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-purple-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🌍</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Semanas Temáticas</h4>
-                                    <p class="text-sm text-ethnos-gray">Cada mes una cultura o tema diferente</p>
-                                </div>
-                                <div class="bg-purple-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🌱</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Huerta Escolar</h4>
-                                    <p class="text-sm text-ethnos-gray">Cultivemos juntos y aprendamos sobre sustentabilidad</p>
-                                </div>
-                                <div class="bg-purple-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🤝</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Sistema de Padrinaje</h4>
-                                    <p class="text-sm text-ethnos-gray">Los más grandes ayudan a los nuevos estudiantes</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mejoras del Colegio -->
-                        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
-                            <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-6">
-                                    <span class="text-3xl">🛠️</span>
-                                </div>
-                                <div>
-                                    <h3 class="text-3xl font-bold text-ethnos-blue">Mejoras para el Colegio</h3>
-                                    <p class="text-ethnos-gray">Hagamos del colegio un lugar más cómodo para todos</p>
-                                </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-green-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🪟</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Cortinas para Aulas</h4>
-                                    <p class="text-sm text-ethnos-gray">Mejor iluminación para estudiar</p>
-                                </div>
-                                <div class="bg-green-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">♻️</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Tachos de Reciclaje</h4>
-                                    <p class="text-sm text-ethnos-gray">Cuidemos el medio ambiente juntos</p>
-                                </div>
-                                <div class="bg-green-50 rounded-xl p-6 text-center">
-                                    <span class="text-4xl mb-3 block">🪞</span>
-                                    <h4 class="font-bold text-ethnos-blue mb-2">Espejos en Baños</h4>
-                                    <p class="text-sm text-ethnos-gray">Para que te veas genial siempre</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div class="bg-purple-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🌱</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Huerta Escolar</h4>
+                                 <p class="text-sm text-ethnos-black">Crear una huerta comunitaria como espacio educativo y recreativo, donde los estudiantes aprendan sobre el cuidado del ambiente, el trabajo en equipo y la sustentabilidad.</p>
+                             </div>
+                             <div class="bg-purple-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🤝</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Padrinaje de Ingresantes</h4>
+                                 <p class="text-sm text-ethnos-black">Implementar un sistema de acompañamiento donde alumnos de cursos superiores orienten y acompañen a los de primer año, facilitando su integración y adaptación al colegio.</p>
+                             </div>
+                             <div class="bg-purple-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">📅</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Semanas Temáticas</h4>
+                                 <p class="text-sm text-ethnos-black">Desarrollar semanas culturales sobre diferentes países, temáticas artísticas o valores institucionales, con actividades interdisciplinarias, música, decoración y charlas educativas.</p>
+                             </div>
+                         </div>
                     </div>
-
-                    <!-- Call to Action -->
-                    <div class="mt-16 text-center">
-                        <div class="bg-gradient-to-r from-ethnos-blue to-ethnos-orange rounded-2xl p-8 text-white">
-                            <h3 class="text-3xl font-bold mb-4">¿Tenés más ideas?</h3>
-                            <p class="text-xl mb-6">¡Queremos escucharte! Tus propuestas son súper importantes para nosotros</p>
-                            <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift">
-                                Contanos tu idea 💡
-                            </button>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-6">
+                                <span class="text-3xl">⚽</span>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Deportivas</h3>
+                                <p class="text-ethnos-black">Fortalecer el trabajo en equipo, la salud y el espíritu deportivo</p>
+                            </div>
                         </div>
+                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🏐</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Torneos Intercursos</h4>
+                                 <p class="text-sm text-ethnos-black">Organizar competencias deportivas (fútbol, vóley, metegol, ping-pong) fomentando el respeto, la convivencia y la inclusión de todos los cursos.</p>
+                             </div>
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">👨‍👦</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Papi Fútbol y Vóley Familiar</h4>
+                                 <p class="text-sm text-ethnos-black">Invitar a padres, madres y docentes a participar de jornadas deportivas junto a los alumnos para fortalecer vínculos y compartir momentos de integración.</p>
+                             </div>
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🥇</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Competencias con Docentes</h4>
+                                 <p class="text-sm text-ethnos-black">Actividades lúdicas entre profesores y alumnos, como desafíos deportivos o trivias, promoviendo el compañerismo y la diversión.</p>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-6">
+                                <span class="text-3xl">🎉</span>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Sociales</h3>
+                                <p class="text-ethnos-black">Promover la unión, la alegría y los buenos momentos entre todos</p>
+                            </div>
+                        </div>
+                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🌻</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Flores Amarillas y Día de la Primavera</h4>
+                                 <p class="text-sm text-ethnos-black">Celebración institucional con decoración, música y actividades simbólicas para fortalecer el espíritu comunitario.</p>
+                             </div>
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🎶</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Música en los Almuerzos</h4>
+                                 <p class="text-sm text-ethnos-black">Recreos o almuerzos con música curada por los estudiantes, generando un ambiente más ameno y participativo.</p>
+                             </div>
+                             <div class="bg-red-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🎂</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Cumpleaños y Reconocimientos</h4>
+                                 <p class="text-sm text-ethnos-black">Tablero comunitario para celebrar los cumpleaños de estudiantes y docentes, y destacar logros o buenas acciones dentro del colegio.</p>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                             <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-6">
+                                 <span class="text-3xl">🛠️</span>
+                             </div>
+                             <div>
+                                 <h3 class="text-3xl font-bold text-ethnos-blue">Mejoras e Infraestructura</h3>
+                                 <p class="text-ethnos-black">Pequeños cambios que mejoran el día a día de todos</p>
+                             </div>
+                         </div>
+                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                             <div class="bg-green-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🪞</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Espejos y Aromatizadores</h4>
+                                 <p class="text-sm text-ethnos-black">Colocación de espejos y aromatizadores en baños y espacios comunes para una mejor presentación y confort diario.</p>
+                             </div>
+                             <div class="bg-green-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">🌿</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Plantas y Decoración</h4>
+                                 <p class="text-sm text-ethnos-black">Incorporar plantas naturales y detalles decorativos que mejoren el ambiente escolar y promuevan el cuidado del entorno.</p>
+                             </div>
+                             <div class="bg-green-50 rounded-xl p-6 text-center">
+                                 <span class="text-4xl mb-3 block">💻</span>
+                                 <h4 class="font-bold text-ethnos-blue mb-2">Computadoras y Aula Digital</h4>
+                                 <p class="text-sm text-ethnos-black">Revisión y mejora de equipos informáticos, y actualización del aula digital para optimizar el aprendizaje.</p>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="mt-16 text-center">
+                    <div class="bg-gradient-to-r from-ethnos-blue to-ethnos-gray rounded-2xl p-8 text-white">
+                        <h3 class="text-3xl font-bold mb-4">¿Tenés una propuesta nueva?</h3>
+                        <p class="text-xl mb-6">Tu voz también cuenta. Si querés aportar una idea, actividad o mejora, ¡queremos conocerla!</p>
+                        <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift">
+                            Compartí tu propuesta 💡
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Página 5: Calendario -->
+        
+        </div> 
         <div id="calendario" class="page-section hidden">
-            <div class="bg-gradient-to-br from-blue-50 to-orange-50 py-20 transition-colors duration-300">
+    <div class="bg-gray-100 py-20 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Calendario ETHNOS</h2>
+                <p class="text-lg text-ethnos-black max-w-3xl mx-auto">Mantente al día con todas nuestras actividades, cumpleaños y eventos importantes</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 transition-colors duration-300">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="previousMonth()" class="p-3 rounded-xl bg-ethnos-blue text-white hover:opacity-90 transition-all duration-300 hover-lift shadow-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="text-center">
+                        <h3 id="current-month" class="text-3xl font-bold text-ethnos-blue mb-1"></h3>
+                        <div class="w-20 h-1 bg-gradient-to-r from-ethnos-blue to-ethnos-gray rounded-full mx-auto"></div>
+                    </div>
+                    <button onclick="nextMonth()" class="p-3 rounded-xl bg-ethnos-blue text-white hover:opacity-90 transition-all duration-300 hover-lift shadow-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-7 gap-3 mb-6">
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Lun</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mar</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mié</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Jue</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Vie</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Sáb</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Dom</div>
+                </div>
+                
+                <div id="calendar-grid" class="grid grid-cols-7 gap-3 mb-8">
+                    </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-xl p-6 shadow-lg transition-colors duration-300">
+                <h4 class="text-xl font-bold text-ethnos-blue mb-4 text-center">Leyenda de Eventos</h4>
+                <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎂</span>
+                        <span class="text-ethnos-black">Cumpleaños</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">⚽</span>
+                        <span class="text-ethnos-black">Eventos Deportivos</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">📢</span>
+                        <span class="text-ethnos-black">Feriados</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">⛪</span>
+                        <span class="text-ethnos-black">Actividades Religiosas</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎭</span>
+                        <span class="text-ethnos-black">Culturales</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎒</span>
+                        <span class="text-ethnos-black">Actividades Escolares</span>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="identidad" class="page-section hidden">
+            <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
-                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Calendario ETHNOS</h2>
-                        <p class="text-lg text-ethnos-gray max-w-3xl mx-auto">Mantente al día con todas nuestras actividades, cumpleaños y eventos importantes</p>
+                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Logo e Identidad</h2>
+                        <p class="text-lg text-ethnos-black max-w-3xl mx-auto">Nuestro logo busca transmitir confianza, cercanía y credibilidad a través de colores y formas que representan unión y comunidad</p>
                     </div>
 
-                    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 transition-colors duration-300">
-                        <!-- Calendar Header -->
-                        <div class="flex justify-between items-center mb-8">
-                            <button onclick="previousMonth()" class="p-3 rounded-xl bg-gradient-to-r from-ethnos-blue to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover-lift shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                            </button>
-                            <div class="text-center">
-                                <h3 id="current-month" class="text-3xl font-bold text-ethnos-blue mb-1"></h3>
-                                <div class="w-20 h-1 bg-gradient-to-r from-ethnos-blue to-ethnos-orange rounded-full mx-auto"></div>
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-center">
+                            <div class="bg-white rounded-2xl shadow-xl p-12 hover-lift text-center">
+                                <img src="assets/logo.png" alt="Logo ETHNOS" class="mx-auto h-48 w-48 mb-6 object-contain rounded-md" onerror="this.style.display='none'">
                             </div>
-                            <button onclick="nextMonth()" class="p-3 rounded-xl bg-gradient-to-r from-ethnos-blue to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover-lift shadow-lg">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
                         </div>
 
-                        <!-- Calendar Grid -->
-                        <div class="grid grid-cols-7 gap-3 mb-6">
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Lun</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mar</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mié</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Jue</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Vie</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Sáb</div>
-                            <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Dom</div>
-                        </div>
-                        
-                        <div id="calendar-grid" class="grid grid-cols-7 gap-3 mb-8">
-                            <!-- Calendar days will be generated by JavaScript -->
-                        </div>
+                        <div class="space-y-8">
+    <div>
+        <h3 class="text-2xl font-bold text-ethnos-blue mb-4">Nuestro Símbolo de Comunidad</h3>
+        <p class="text-ethnos-black mb-4">Nuestro logo representa la unión entre dos cursos o grupos y la igualdad de opiniones, todo dentro de un mismo espacio donde pasamos gran parte de nuestro día. Cada elemento representa las relaciones entre los estudiantes dentro de la institución, creando un puente para resolver problemáticas comunes.</p>
+    </div>
 
-                        <!-- Calendar Actions -->
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button onclick="downloadCalendar()" class="bg-ethnos-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover-lift inline-flex items-center justify-center">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                                Descargar Calendario (.ics)
-                            </button>
-                            <button onclick="window.open('https://calendar.google.com', '_blank')" class="bg-ethnos-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover-lift inline-flex items-center justify-center">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                                </svg>
-                                Abrir Google Calendar
-                            </button>
-                        </div>
-                    </div>
+    <div class="grid grid-cols-3 gap-4">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-blue rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-blue">Azul</p>
+            <p class="text-xs text-ethnos-black">Confianza, calma y seguridad</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-red rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-red">Bordo</p>
+            <p class="text-xs text-ethnos-black">Seriedad y madurez</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-gray rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-gray">Gris</p>
+            <p class="text-xs text-ethnos-black">Neutralidad y escucha</p>
+        </div>
+    </div>
 
-                    <!-- Event Legend -->
-                    <div class="mt-8 bg-white rounded-xl p-6 shadow-lg transition-colors duration-300">
-                        <h4 class="text-xl font-bold text-ethnos-blue mb-4 text-center">Leyenda de Eventos</h4>
-                        <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
-        
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">🎂</span>
-                                <span class="text-ethnos-gray">Cumpleaños</span>
-                            </div>
-        
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">⚽</span>
-                                <span class="text-ethnos-gray">Eventos Deportivos</span>
-                            </div>
-        
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">📢</span>
-                                <span class="text-ethnos-gray">Feriados</span>
-                            </div>
-                            
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">⛪</span>
-                                <span class="text-ethnos-gray">Actividades Religiosas</span>
-                            </div>
-        
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">🎭</span>
-                                <span class="text-ethnos-gray">Culturales</span>
-                            </div>
-                            
-                            <div class="flex items-center justify-center space-x-2">
-                                <span class="text-2xl">🎒</span>
-                                <span class="text-ethnos-gray">Actividades Escolares</span>
-                            </div>        
+    <div>
+        <h3 class="text-2xl font-bold text-ethnos-blue mb-4">Valores que Transmite</h3>
+        <ul class="space-y-2 text-ethnos-black">
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-blue rounded-full mr-3"></span>Confianza y credibilidad</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-red rounded-full mr-3"></span>Cercanía y accesibilidad</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-gray rounded-full mr-3"></span>Organización y profesionalismo</li>
+        </ul>
+    </div>
+</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Página 6: Redes Sociales -->
         <div id="redes" class="page-section hidden">
             <div class="bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
                         <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¡Conectate con Nosotros! 📱</h2>
-                        <p class="text-xl text-ethnos-gray max-w-3xl mx-auto">Seguinos en Instagram para no perderte nada de lo que pasa en el cole. ¡Somos súper activos y siempre subimos contenido genial!</p>
+                        <p class="text-xl text-ethnos-black max-w-3xl mx-auto">Seguinos en Instagram para no perderte nada de lo que pasa en el cole. ¡Somos súper activos y siempre subimos contenido genial!</p>
                     </div>
 
-                    <!-- Instagram Main Card -->
                     <div class="mb-16">
                         <div class="bg-white rounded-3xl shadow-2xl overflow-hidden hover-lift">
                             <div class="instagram-post p-8 text-white text-center">
@@ -620,58 +533,50 @@
                                     ¡Seguinos Ya!
                                 </button>
                             </div>
-                            
-
                         </div>
                     </div>
 
-                    <!-- Content Section -->
                     <div class="max-w-4xl mx-auto">
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <h4 class="text-2xl font-bold text-ethnos-blue mb-6 text-center">¿Qué vas a encontrar? 🤔</h4>
-                            
                             <div class="space-y-6">
                                 <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 hover-lift">
                                     <div class="flex items-center mb-3">
                                         <span class="text-3xl mr-4">📸</span>
                                         <div>
                                             <h5 class="font-bold text-ethnos-blue text-lg">Fotos de Eventos</h5>
-                                            <p class="text-ethnos-gray text-sm">Todos los momentos épicos del cole</p>
+                                            <p class="text-ethnos-black text-sm">Todos los momentos épicos del cole</p>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl p-6 hover-lift">
                                     <div class="flex items-center mb-3">
                                         <span class="text-3xl mr-4">🎉</span>
                                         <div>
                                             <h5 class="font-bold text-ethnos-blue text-lg">Anuncios de Actividades</h5>
-                                            <p class="text-ethnos-gray text-sm">Para que no te pierdas nada divertido</p>
+                                            <p class="text-ethnos-black text-sm">Para que no te pierdas nada divertido</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-6 hover-lift">
+                                <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 hover-lift">
                                     <div class="flex items-center mb-3">
                                         <span class="text-3xl mr-4">💬</span>
                                         <div>
                                             <h5 class="font-bold text-ethnos-blue text-lg">Stories Divertidas</h5>
-                                            <p class="text-ethnos-gray text-sm">Contenido exclusivo y súper entretenido</p>
+                                            <p class="text-ethnos-black text-sm">Contenido exclusivo y súper entretenido</p>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-6 hover-lift">
                                     <div class="flex items-center mb-3">
                                         <span class="text-3xl mr-4">🏆</span>
                                         <div>
                                             <h5 class="font-bold text-ethnos-blue text-lg">Resultados de Torneos</h5>
-                                            <p class="text-ethnos-gray text-sm">Celebramos todos los logros juntos</p>
+                                            <p class="text-ethnos-black text-sm">Celebramos todos los logros juntos</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="mt-8 text-center">
                                 <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-gradient-to-r from-ethnos-blue to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift shadow-lg">
                                     <span class="text-xl mr-2">🚀</span>
@@ -682,24 +587,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <!-- Página 8: Extras -->
-        <div id="extras" class="page-section hidden">
-            <div class="bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 py-20">
+            <div class="bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 py-20">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
                         <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¡Contenido Extra! 🎉</h2>
-                        <p class="text-xl text-ethnos-gray max-w-3xl mx-auto">Acá encontrás todo lo que no te podés perder: fotos, videos, logros y mucho más contenido genial de ETHNOS</p>
+                        <p class="text-xl text-ethnos-black max-w-3xl mx-auto">Acá encontrás todo lo que no te podés perder: fotos, videos, logros y mucho más contenido genial de ETHNOS</p>
                     </div>
 
-                    <!-- Galería de Eventos -->
                     <div class="mb-16">
                         <div class="bg-white rounded-3xl shadow-xl p-8 mb-12">
                             <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-8">📸 Galería de Momentos Épicos</h3>
-                            <p class="text-center text-ethnos-gray mb-8">Los mejores momentos del cole capturados para siempre</p>
+                            <p class="text-center text-ethnos-black mb-8">Los mejores momentos del cole capturados para siempre</p>
                             
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('torneo-voley')">
@@ -723,11 +621,11 @@
                                         <p class="text-green-100 text-sm">Cuidando el planeta</p>
                                     </div>
                                 </div>
-                                <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('dia-estudiante')">
+                                <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('dia-estudiante')">
                                     <div class="text-center">
                                         <span class="text-5xl mb-3 block">🎉</span>
                                         <p class="font-bold text-lg">Día del Estudiante</p>
-                                        <p class="text-orange-100 text-sm">¡Pura diversión!</p>
+                                        <p class="text-red-100 text-sm">¡Pura diversión!</p>
                                     </div>
                                 </div>
                                 <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('feria-libro')">
@@ -748,72 +646,70 @@
                         </div>
                     </div>
 
-                    <!-- Buzón de Peticiones -->
                     <div class="mb-16">
-                        <div class="bg-white rounded-3xl shadow-xl p-8">
-                            <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-8">🙏 Buzón de Peticiones para la Oración</h3>
-                            <p class="text-center text-ethnos-gray mb-8">¿Tenés alguna petición especial? Enviala y la incluiremos en la oración de la mañana</p>
-                            
-                            <form id="petitionForm" class="max-w-2xl mx-auto space-y-6">
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-ethnos-blue font-bold mb-2">Tu Nombre</label>
-                                        <input type="text" id="petitionName" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" placeholder="Escribí tu nombre" required>
-                                    </div>
-                                    <div>
-                                        <label class="block text-ethnos-blue font-bold mb-2">Curso</label>
-                                        <input type="text" id="petitionCourse" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" placeholder="Ej: 5to A" required>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-ethnos-blue font-bold mb-2">Tipo de Petición</label>
-                                    <select id="petitionType" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" required>
-                                        <option value="">Seleccioná una opción</option>
-                                        <option value="persona">Por una persona</option>
-                                        <option value="mascota">Por una mascota</option>
-                                        <option value="evento">Por un evento especial</option>
-                                        <option value="familia">Por la familia</option>
-                                        <option value="salud">Por salud</option>
-                                        <option value="estudios">Por los estudios</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-ethnos-blue font-bold mb-2">Tu Petición</label>
-                                    <textarea id="petitionMessage" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors resize-none" placeholder="Contanos por qué o por quién querés que oremos..." required></textarea>
-                                </div>
-                                
-                                <div class="flex items-center space-x-2">
-                                    <input type="checkbox" id="petitionAnonymous" class="w-5 h-5 text-ethnos-blue border-2 border-gray-300 rounded focus:ring-ethnos-blue">
-                                    <label for="petitionAnonymous" class="text-ethnos-gray">Enviar de forma anónima</label>
-                                </div>
-                                
-                                <div class="text-center">
-                                    <button type="submit" class="bg-gradient-to-r from-ethnos-blue to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift shadow-lg">
-                                        <span class="text-xl mr-2">🙏</span>
-                                        Enviar Petición
-                                    </button>
-                                </div>
-                            </form>
-                            
-                            <div class="mt-8 bg-blue-50 rounded-xl p-6">
-                                <div class="flex items-center justify-center mb-4">
-                                    <span class="text-3xl mr-3">💙</span>
-                                    <h4 class="text-lg font-bold text-ethnos-blue">Información Importante</h4>
-                                </div>
-                                <ul class="text-ethnos-gray text-sm space-y-2">
-                                    <li>• Las peticiones se revisan diariamente</li>
-                                    <li>• Se incluyen en la oración de la mañana con respeto y cariño</li>
-                                    <li>• Podés enviar peticiones cuando quieras</li>
-                                    <li>• Todas las peticiones son tratadas con confidencialidad</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <div class="bg-white rounded-3xl shadow-xl p-8">
+        <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-8">🙏 Buzón de Peticiones para la Oración</h3>
+        <p class="text-center text-ethnos-black mb-8">¿Tenés alguna petición especial? Enviala y la incluiremos en la oración de la mañana</p>
+        
+        <form id="petitionForm" class="max-w-2xl mx-auto space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-ethnos-blue font-bold mb-2">Tu Nombre</label>
+                    <input type="text" id="petitionName" name="nombre" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" placeholder="Escribí tu nombre" required>
+                </div>
+                <div>
+                    <label class="block text-ethnos-blue font-bold mb-2">Curso</label>
+                    <input type="text" id="petitionCourse" name="curso" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" placeholder="Ej: 5to A" required>
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-ethnos-blue font-bold mb-2">Tipo de Petición</label>
+                <select id="petitionType" name="tipo" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors" required>
+                    <option value="">Seleccioná una opción</option>
+                    <option value="persona">Por una persona</option>
+                    <option value="mascota">Por una mascota</option>
+                    <option value="evento">Por un evento especial</option>
+                    <option value="familia">Por la familia</option>
+                    <option value="salud">Por salud</option>
+                    <option value="estudios">Por los estudios</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            
+            <div>
+                <label class="block text-ethnos-blue font-bold mb-2">Tu Petición</label>
+                <textarea id="petitionMessage" name="mensaje" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-ethnos-blue focus:outline-none transition-colors resize-none" placeholder="Contanos por qué o por quién querés que oremos..." required></textarea>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" id="petitionAnonymous" name="anonimo" class="w-5 h-5 text-ethnos-blue border-2 border-gray-300 rounded focus:ring-ethnos-blue">
+                <label for="petitionAnonymous" class="text-ethnos-black">Enviar de forma anónima</label>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="bg-gradient-to-r from-ethnos-blue to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift shadow-lg">
+                    <span class="text-xl mr-2">🙏</span>
+                    Enviar Petición
+                </button>
+            </div>
+        </form>
+        
+        <div class="mt-8 bg-blue-50 rounded-xl p-6">
+            <div class="flex items-center justify-center mb-4">
+                <span class="text-3xl mr-3">💙</span>
+                <h4 class="text-lg font-bold text-ethnos-blue">Información Importante</h4>
+            </div>
+            <ul class="text-ethnos-black text-sm space-y-2">
+                <li>• Las peticiones se revisan diariamente</li>
+                <li>• Se incluyen en la oración de la mañana con respeto y cariño</li>
+                <li>• Podés enviar peticiones cuando quieras</li>
+                <li>• Todas las peticiones son tratadas con confidencialidad</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-                    <!-- Próximos Eventos -->
                     <div class="mb-16">
                         <div class="bg-gradient-to-br from-ethnos-blue to-purple-600 rounded-3xl shadow-xl p-8 text-white">
                             <h3 class="text-3xl font-bold text-center mb-8">🚀 ¡Se Viene lo Mejor!</h3>
@@ -826,14 +722,12 @@
                                     <p class="text-blue-100 text-sm mb-2">Marzo 2025</p>
                                     <p class="text-blue-100 text-sm">¡Mostrá tu talento al cole!</p>
                                 </div>
-                                
                                 <div class="bg-white bg-opacity-20 rounded-xl p-6 hover-lift">
                                     <span class="text-4xl mb-3 block">🏃‍♂️</span>
                                     <h4 class="font-bold text-lg mb-2">Maratón Solidaria</h4>
                                     <p class="text-blue-100 text-sm mb-2">Abril 2025</p>
                                     <p class="text-blue-100 text-sm">Corremos por una buena causa</p>
                                 </div>
-                                
                                 <div class="bg-white bg-opacity-20 rounded-xl p-6 hover-lift">
                                     <span class="text-4xl mb-3 block">🎨</span>
                                     <h4 class="font-bold text-lg mb-2">Expo Arte Joven</h4>
@@ -843,15 +737,10 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
 
-    </div>
-
-
-<script src="script.js"></script>
+    </div> <script src="script.js"></script>
 </body>
 </html>

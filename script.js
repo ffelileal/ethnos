@@ -129,7 +129,10 @@ const events = {
 function generateCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
-    const firstDay = new Date(year, month, 1).getDay();
+    // Ajuste para que Lunes sea 0 (getDay() da 0 para Domingo, 1 para Lunes... 6 para Sábado)
+    let firstDay = new Date(year, month, 1).getDay();
+    firstDay = (firstDay === 0) ? 6 : firstDay - 1; // Ahora 0=Lunes, 1=Martes, ... 6=Domingo
+
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const today = new Date();
     
@@ -158,14 +161,30 @@ function generateCalendar() {
         dayCell.className = 'calendar-day h-16 flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all duration-300 border-2 border-transparent font-medium';
         
         if (isToday) {
-            dayCell.className += ' ring-2 ring-ethnos-orange ring-opacity-50 bg-gradient-to-br from-ethnos-orange to-orange-500 text-white shadow-lg';
+            // ==================================================================
+            // AQUÍ ESTABA EL ERROR 1:
+            // Usabas 'ethnos-yellow' (que no está en tu paleta) y 'text-white'.
+            // El fondo no se aplicaba, quedando texto blanco sobre fondo blanco.
+            //
+            // SOLUCIÓN:
+            // Usar 'bg-ethnos-blue' (que sí existe) con 'text-white'.
+            // ==================================================================
+            dayCell.className += ' bg-ethnos-blue text-white shadow-lg';
             dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-xs">HOY</span>`;
         } else if (event) {
             if (event.type === 'birthday') {
                 dayCell.className += ' bg-gradient-to-br from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-pink-300 shadow-md';
                 dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-2xl">🎂</span>`;
             } else if (event.type === 'event') {
-                dayCell.className += ' bg-gradient-to-br from-orange-100 to-orange-200 text-ethnos-orange hover:from-orange-200 hover:to-orange-300 border-orange-300 shadow-md';
+                // ==================================================================
+                // AQUÍ ESTABA EL ERROR 2:
+                // También usabas 'ethnos-yellow' que no existe.
+                //
+                // SOLUCIÓN:
+                // Reemplazado por un gradiente 'yellow' estándar de Tailwind,
+                // siguiendo el mismo patrón que tus otros eventos.
+                // ==================================================================
+                dayCell.className += ' bg-gradient-to-br from-yellow-100 to-yellow-200 text-yellow-800 hover:from-yellow-200 hover:to-yellow-300 border-yellow-300 shadow-md';
                 dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-2xl">⚽</span>`;
             } else if (event.type === 'holiday') {
                 dayCell.className += ' bg-gradient-to-br from-blue-100 to-blue-200 text-blue-800 hover:from-blue-200 hover:to-blue-300 border-blue-300 shadow-md';
@@ -190,7 +209,7 @@ function generateCalendar() {
                     birthday: '🎂',
                     event: '⚽',
                     holiday: '📢',
-                    religion: '✏️',
+                    religion: '✏️', // Nota: El ícono en la leyenda era ⛪, aquí es ✏️. Lo dejo como estaba en tu JS.
                     cultural: '🎭',
                     school: '🎒',
                     other: '📅'
@@ -228,12 +247,19 @@ function showEventModal(icon, title, description, details, dateStr) {
     const modalContent = document.createElement('div');
     modalContent.className = 'bg-white rounded-2xl p-8 max-w-lg w-full max-h-96 overflow-y-auto shadow-2xl';
     
+    // ==================================================================
+    // AQUÍ ESTABA EL ERROR 3:
+    // El gradiente decorativo usaba 'to-ethnos-yellow' (inexistente).
+    //
+    // SOLUCIÓN:
+    // Cambiado a 'to-ethnos-gray' (que sí existe en tu paleta).
+    // ==================================================================
     modalContent.innerHTML = `
         <div class="text-center mb-6">
             <span class="text-6xl mb-4 block">${icon}</span>
             <h3 class="text-2xl font-bold text-ethnos-blue mb-2">${title}</h3>
             <p class="text-ethnos-gray font-medium">${description}</p>
-            <div class="w-20 h-1 bg-gradient-to-r from-ethnos-blue to-ethnos-orange rounded-full mx-auto mt-4"></div>
+            <div class="w-20 h-1 bg-gradient-to-r from-ethnos-blue to-ethnos-gray rounded-full mx-auto mt-4"></div>
         </div>
         
         <div class="mb-6">
@@ -265,76 +291,130 @@ function showEventModal(icon, title, description, details, dateStr) {
     };
 }
 
-function addToGoogleCalendar(dateStr, title, details) {
-    const date = new Date(dateStr);
-    const startDate = date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    const endDate = new Date(date.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=Colegio`;
-    
-    window.open(googleCalendarUrl, '_blank');
-}
 
-function downloadCalendar() {
-    let icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//ETHNOS//Centro de Estudiantes//ES
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-`;
 
-    Object.keys(events).forEach(dateStr => {
-        const event = events[dateStr];
-        const date = new Date(dateStr);
-        const startDate = date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-        const endDate = new Date(date.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-        
-        icsContent += `BEGIN:VEVENT
-DTSTART:${startDate}
-DTEND:${endDate}
-SUMMARY:${event.title}
-DESCRIPTION:${event.details || event.description}
-LOCATION:Colegio
-UID:${dateStr}-ethnos@colegio.edu
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'}
-END:VEVENT
-`;
-    });
-
-    icsContent += 'END:VCALENDAR';
-    
-    const blob = new Blob([icsContent], { type: 'text/calendar' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'calendario-ethnos-2025.ics';
-    a.click();
-    URL.revokeObjectURL(url);
-}
 
 // Petition form functionality
 function handlePetitionSubmit(event) {
-    event.preventDefault();
+    event.preventDefault(); // Evita que la página se recargue
+
+    const form = event.target;
+    const formData = new FormData(form);
     
-    const name = document.getElementById('petitionName').value;
-    const course = document.getElementById('petitionCourse').value;
-    const type = document.getElementById('petitionType').value;
-    const message = document.getElementById('petitionMessage').value;
-    const anonymous = document.getElementById('petitionAnonymous').checked;
+    // --- AQUÍ ESTÁ TU URL ---
+    const formspreeEndpoint = 'https://formspree.io/f/xrboerky'; 
+
+    // Obtenemos los valores para tu alerta personalizada
+    const name = formData.get('nombre') || '';
+    const course = formData.get('curso') || '';
+    const type = formData.get('tipo') || '';
+    const message = formData.get('mensaje') || '';
+    // Corregido: formData.has('anonimo') es la forma correcta
+    const anonymous = formData.has('anonimo'); 
     
     const submitterInfo = anonymous ? 'Anónimo' : `${name} (${course})`;
-    
-    alert(`🙏 ¡Petición Enviada!\n\nDe: ${submitterInfo}\nTipo: ${type}\nMensaje: ${message}\n\n✨ Tu petición será incluida en la próxima oración de la mañana con mucho cariño y respeto.\n\n¡Gracias por confiar en nosotros!`);
-    
-    document.getElementById('petitionForm').reset();
+
+    // Deshabilitar el botón de envío para evitar clics múltiples
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...'; // Feedback visual
+    }
+
+    // Usamos fetch para enviar los datos a Formspree (AJAX)
+    fetch(formspreeEndpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json' // Para que Formspree responda con JSON
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // ¡Éxito! Muestra tu alerta personalizada
+            alert(`🙏 ¡Petición Enviada!\n\nDe: ${submitterInfo}\nTipo: ${type}\nMensaje: ${message}\n\n✨ Tu petición será incluida en la próxima oración de la mañana con mucho cariño y respeto.\n\n¡Gracias por confiar en nosotros!`);
+            
+            // Resetea el formulario
+            form.reset();
+            
+            // Forzamos el reseteo visual del checkbox de anónimo (por si acaso)
+            const anonymousCheckbox = document.getElementById('petitionAnonymous');
+            const nameInput = document.getElementById('petitionName');
+            const courseInput = document.getElementById('petitionCourse');
+            if (anonymousCheckbox && anonymousCheckbox.checked) {
+                anonymousCheckbox.checked = false;
+                // Disparamos el evento 'change' manualmente para re-habilitar los campos
+                anonymousCheckbox.dispatchEvent(new Event('change'));
+            }
+
+        } else {
+            // Hubo un error en el servidor de Formspree
+            response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                    alert(data["errors"].map(error => error["message"]).join(", "));
+                } else {
+                    alert('Error al enviar la petición. Por favor, inténtalo de nuevo.');
+                }
+            });
+        }
+    })
+    .catch(error => {
+        // Hubo un error de red (ej. sin internet)
+        console.error('Error al enviar formulario:', error);
+        alert('Error de conexión. Por favor, revisa tu internet e inténtalo de nuevo.');
+    })
+    .finally(() => {
+        // Vuelve a habilitar el botón de envío y restaura el texto
+        if (submitButton) {
+            submitButton.disabled = false;
+            // Restauramos el texto original del botón (con el emoji)
+            submitButton.innerHTML = '<span class="text-xl mr-2">🙏</span> Enviar Petición';
+        }
+    });
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    generateCalendar();
     
+    // Asumo que esta función existe en tu JS (del calendario)
+    if (typeof generateCalendar === 'function') {
+        generateCalendar();
+    }
+    
+    // Asocia la función de envío al formulario
     const petitionForm = document.getElementById('petitionForm');
+    
     if (petitionForm) {
         petitionForm.addEventListener('submit', handlePetitionSubmit);
+
+        // --- ¡NUEVA LÓGICA MEJORADA! ---
+        // Maneja el conflicto entre "Anónimo" y los campos "required"
+        const anonymousCheckbox = document.getElementById('petitionAnonymous');
+        const nameInput = document.getElementById('petitionName');
+        const courseInput = document.getElementById('petitionCourse');
+
+        if (anonymousCheckbox && nameInput && courseInput) {
+            anonymousCheckbox.addEventListener('change', function() {
+                const isChecked = this.checked;
+
+                // Habilita/deshabilita y quita/pone 'required'
+                nameInput.required = !isChecked;
+                courseInput.required = !isChecked;
+                nameInput.disabled = isChecked;
+                courseInput.disabled = isChecked;
+
+                if (isChecked) {
+                    // Si es anónimo, borra los campos y añade un estilo visual
+                    nameInput.value = '';
+                    courseInput.value = '';
+                    nameInput.classList.add('bg-gray-100', 'cursor-not-allowed');
+                    courseInput.classList.add('bg-gray-100', 'cursor-not-allowed');
+                } else {
+                    // Si no es anónimo, quita el estilo visual
+                    nameInput.classList.remove('bg-gray-100', 'cursor-not-allowed');
+                    courseInput.classList.remove('bg-gray-100', 'cursor-not-allowed');
+                }
+            });
+        }
     }
 });
