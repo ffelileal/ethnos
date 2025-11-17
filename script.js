@@ -57,78 +57,76 @@ function toggleProposal(proposalId) {
 let currentDate = new Date();
 const events = {
     // Enero
-'2026-01-01': { type: 'holiday', title: 'Año Nuevo', description: '¡Feliz Año nuevo a toda la comunidad claretiana!' },
-'2026-01-04': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Guadalupe Vaccaro' },
-'2026-01-10': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Tomás Bordenave' },
-'2026-01-24': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lourdes Ragazzini' },
+    '2026-01-01': { type: 'holiday', title: 'Año Nuevo', description: '¡Feliz Año nuevo a toda la comunidad claretiana!' },
+    '2026-01-04': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Guadalupe Vaccaro' },
+    '2026-01-10': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Tomás Bordenave' },
+    '2026-01-24': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lourdes Ragazzini' },
 
-// Febrero
-'2026-02-16': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
-'2026-02-17': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
+    // Febrero
+    '2026-02-16': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
+    '2026-02-17': { type: 'holiday', title: 'Carnaval', description: 'Feriado nacional - Carnaval' },
 
-// Marzo
-'2026-03-24': { type: 'holiday', title: 'Día de la Memoria', description: 'Día Nacional de la Memoria por la Verdad y la Justicia' },
-'2026-03-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lucía Areco' },
+    // Marzo
+    '2026-03-24': { type: 'holiday', title: 'Día de la Memoria', description: 'Día Nacional de la Memoria por la Verdad y la Justicia' },
+    '2026-03-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Lucía Areco' },
 
-// Abril
-'2026-04-01': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Julián Leal (6to E&C)' },
-'2026-04-02': { type: 'holiday', title: 'Malvinas', description: 'Día del Veterano y de los Caídos en la Guerra de Malvinas' },
-'2026-04-03': { type: 'holiday', title: 'Viernes Santo', description: 'Conmemoración religiosa' },
-'2026-04-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Jazmín Begue' },
-'2026-04-28': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Ana Heredia' },
+    // Abril
+    '2026-04-01': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Julián Leal (6to E&C)' },
+    '2026-04-02': { type: 'holiday', title: 'Malvinas', description: 'Día del Veterano y de los Caídos en la Guerra de Malvinas' },
+    '2026-04-03': { type: 'holiday', title: 'Viernes Santo', description: 'Conmemoración religiosa' },
+    '2026-04-25': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Jazmín Begue' },
+    '2026-04-28': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Ana Heredia' },
 
-// Mayo
-'2026-05-01': { type: 'holiday', title: 'Día del Trabajador', description: 'Feriado nacional' },
-'2026-05-25': { type: 'holiday', title: 'Revolución de Mayo', description: 'Día de la Patria' },
+    // Mayo
+    '2026-05-01': { type: 'holiday', title: 'Día del Trabajador', description: 'Feriado nacional' },
+    '2026-05-25': { type: 'holiday', title: 'Revolución de Mayo', description: 'Día de la Patria' },
 
-// Junio
-'2026-06-11': { type: 'event', title: 'Inicio del Mundial 2026', description: '¡Vamos todos a apoyar el mundial 2026!' },
-'2026-06-16': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Isabella Anthonioz' },
-'2026-06-17': { type: 'holiday', title: 'Gral. Güemes', description: 'Paso a la Inmortalidad del General Martín Miguel de Güemes' },
-'2026-06-20': { type: 'holiday', title: 'Belgrano', description: 'Paso a la Inmortalidad del Gral. Manuel Belgrano' },
+    // Junio
+    '2026-06-11': { type: 'event', title: 'Inicio del Mundial 2026', description: '¡Vamos todos a apoyar el mundial 2026!' },
+    '2026-06-16': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Isabella Anthonioz' },
+    '2026-06-17': { type: 'holiday', title: 'Gral. Güemes', description: 'Paso a la Inmortalidad del General Martín Miguel de Güemes' },
+    '2026-06-20': { type: 'holiday', title: 'Belgrano', description: 'Paso a la Inmortalidad del Gral. Manuel Belgrano' },
 
-// Julio
-'2026-07-09': { type: 'holiday', title: 'Independencia', description: 'Día de la Independencia Argentina' },
+    // Julio
+    '2026-07-09': { type: 'holiday', title: 'Independencia', description: 'Día de la Independencia Argentina' },
 
-// Agosto
-'2026-08-17': { type: 'holiday', title: 'San Martín', description: 'Paso a la Inmortalidad del Gral. José de San Martín' },
+    // Agosto
+    '2026-08-17': { type: 'holiday', title: 'San Martín', description: 'Paso a la Inmortalidad del Gral. José de San Martín' },
 
-// Septiembre
-'2026-09-12': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Leticia Bee Sellares' },
-'2026-09-23': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Cande Griffo' },
+    // Septiembre
+    '2026-09-12': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Leticia Bee Sellares' },
+    '2026-09-23': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Cande Griffo' },
 
-// Octubre 2025 (del calendario subido)
-'2025-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
-'2025-10-02': { type: 'holiday', title: 'Día del Perdón', description: 'Conmemoración religiosa' },
-'2025-10-10': { type: 'holiday', title: 'Día de la Raza', description: 'Traslado del 12/10 - Diversidad Cultural' },
+    // Octubre 2025 (del calendario subido)
+    '2025-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
+    '2025-10-02': { type: 'holiday', title: 'Día del Perdón', description: 'Conmemoración religiosa' },
+    '2025-10-10': { type: 'holiday', title: 'Día de la Raza', description: 'Traslado del 12/10 - Diversidad Cultural' },
 
-// Octubre 2026 (general + cumple)
-'2026-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
-'2026-10-12': { type: 'holiday', title: 'Diversidad Cultural', description: 'Día del Respeto a la Diversidad Cultural' },
+    // Octubre 2026 (general + cumple)
+    '2026-10-03': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Feli Potkova' },
+    '2026-10-12': { type: 'holiday', title: 'Diversidad Cultural', description: 'Día del Respeto a la Diversidad Cultural' },
 
-// Noviembre 2025
-'2025-11-21': { type: 'holiday', title: 'Feriado turístico', description: 'Día no laborable con fines turísticos' },
-'2025-11-24': { type: 'holiday', title: 'Soberanía Nacional', description: 'Traslado del 20/11 - Día de la Soberanía Nacional' },
+    // Noviembre 2025
+    '2025-11-21': { type: 'holiday', title: 'Feriado turístico', description: 'Día no laborable con fines turísticos' },
+    '2025-11-24': { type: 'holiday', title: 'Soberanía Nacional', description: 'Traslado del 20/11 - Día de la Soberanía Nacional' },
 
-// Noviembre 2026
-'2026-11-20': { type: 'holiday', title: 'Soberanía Nacional', description: 'Día de la Soberanía Nacional' },
+    // Noviembre 2026
+    '2026-11-20': { type: 'holiday', title: 'Soberanía Nacional', description: 'Día de la Soberanía Nacional' },
 
-// Diciembre 2025
-'2025-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
-'2025-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' },
+    // Diciembre 2025
+    '2025-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
+    '2025-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' },
 
-// Diciembre 2026
-'2026-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
-'2026-12-15': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Valentina Racca' },
-'2026-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' }
-
+    // Diciembre 2026
+    '2026-12-08': { type: 'holiday', title: 'Inmaculada Concepción', description: 'Conmemoración religiosa' },
+    '2026-12-15': { type: 'birthday', title: 'Cumpleaños', description: '🎂 Valentina Racca' },
+    '2026-12-25': { type: 'holiday', title: 'Navidad', description: '¡Feliz Navidad a toda la comunidad claretiana!' }
 };
-
-
 
 function generateCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
+
     // Ajuste para que Lunes sea 0 (getDay() da 0 para Domingo, 1 para Lunes... 6 para Sábado)
     let firstDay = new Date(year, month, 1).getDay();
     firstDay = (firstDay === 0) ? 6 : firstDay - 1; // Ahora 0=Lunes, 1=Martes, ... 6=Domingo
@@ -161,14 +159,6 @@ function generateCalendar() {
         dayCell.className = 'calendar-day h-16 flex flex-col items-center justify-center rounded-xl cursor-pointer transition-all duration-300 border-2 border-transparent font-medium';
         
         if (isToday) {
-            // ==================================================================
-            // AQUÍ ESTABA EL ERROR 1:
-            // Usabas 'ethnos-yellow' (que no está en tu paleta) y 'text-white'.
-            // El fondo no se aplicaba, quedando texto blanco sobre fondo blanco.
-            //
-            // SOLUCIÓN:
-            // Usar 'bg-ethnos-blue' (que sí existe) con 'text-white'.
-            // ==================================================================
             dayCell.className += ' bg-ethnos-blue text-white shadow-lg';
             dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-xs">HOY</span>`;
         } else if (event) {
@@ -176,14 +166,6 @@ function generateCalendar() {
                 dayCell.className += ' bg-gradient-to-br from-pink-100 to-pink-200 text-pink-800 hover:from-pink-200 hover:to-pink-300 border-pink-300 shadow-md';
                 dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-2xl">🎂</span>`;
             } else if (event.type === 'event') {
-                // ==================================================================
-                // AQUÍ ESTABA EL ERROR 2:
-                // También usabas 'ethnos-yellow' que no existe.
-                //
-                // SOLUCIÓN:
-                // Reemplazado por un gradiente 'yellow' estándar de Tailwind,
-                // siguiendo el mismo patrón que tus otros eventos.
-                // ==================================================================
                 dayCell.className += ' bg-gradient-to-br from-yellow-100 to-yellow-200 text-yellow-800 hover:from-yellow-200 hover:to-yellow-300 border-yellow-300 shadow-md';
                 dayCell.innerHTML = `<span class="text-lg font-bold">${day}</span><span class="text-2xl">⚽</span>`;
             } else if (event.type === 'holiday') {
@@ -209,7 +191,7 @@ function generateCalendar() {
                     birthday: '🎂',
                     event: '⚽',
                     holiday: '📢',
-                    religion: '✏️', // Nota: El ícono en la leyenda era ⛪, aquí es ✏️. Lo dejo como estaba en tu JS.
+                    religion: '✏️', // (leyenda ⛪, acá ✏️ como ya tenías)
                     cultural: '🎭',
                     school: '🎒',
                     other: '📅'
@@ -247,13 +229,6 @@ function showEventModal(icon, title, description, details, dateStr) {
     const modalContent = document.createElement('div');
     modalContent.className = 'bg-white rounded-2xl p-8 max-w-lg w-full max-h-96 overflow-y-auto shadow-2xl';
     
-    // ==================================================================
-    // AQUÍ ESTABA EL ERROR 3:
-    // El gradiente decorativo usaba 'to-ethnos-yellow' (inexistente).
-    //
-    // SOLUCIÓN:
-    // Cambiado a 'to-ethnos-gray' (que sí existe en tu paleta).
-    // ==================================================================
     modalContent.innerHTML = `
         <div class="text-center mb-6">
             <span class="text-6xl mb-4 block">${icon}</span>
@@ -284,110 +259,112 @@ function showEventModal(icon, title, description, details, dateStr) {
     modal.appendChild(modalContent);
     document.body.appendChild(modal);
     
-    // Add close function
     window.closeModal = () => {
         document.body.removeChild(modal);
         delete window.closeModal;
     };
 }
 
+// ============================
+// VERIFICACIÓN POR CÓDIGO
+// ============================
 
+let verificationTokenGlobal = null;
 
+// PIDE el código al backend
+async function requestVerificationCode(email) {
+  const res = await fetch("/api/request-code", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email }),
+  });
 
-// Petition form functionality
-function handlePetitionSubmit(event) {
-    event.preventDefault(); // Evita que la página se recargue
+  const data = await res.json();
+  if (!res.ok) {
+    alert(data.error || "Error al pedir código");
+    return;
+  }
 
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // --- AQUÍ ESTÁ TU URL ---
-    const formspreeEndpoint = 'https://formspree.io/f/xrboerky'; 
-
-    // Obtenemos los valores para tu alerta personalizada
-    const name = formData.get('nombre') || '';
-    const course = formData.get('curso') || '';
-    const type = formData.get('tipo') || '';
-    const message = formData.get('mensaje') || '';
-    // Corregido: formData.has('anonimo') es la forma correcta
-    const anonymous = formData.has('anonimo'); 
-    
-    const submitterInfo = anonymous ? 'Anónimo' : `${name} (${course})`;
-
-    // Deshabilitar el botón de envío para evitar clics múltiples
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...'; // Feedback visual
-    }
-
-    // Usamos fetch para enviar los datos a Formspree (AJAX)
-    fetch(formspreeEndpoint, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json' // Para que Formspree responda con JSON
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            // ¡Éxito! Muestra tu alerta personalizada
-            alert(`🙏 ¡Petición Enviada!\n\nDe: ${submitterInfo}\nTipo: ${type}\nMensaje: ${message}\n\n✨ Tu petición será incluida en la próxima oración de la mañana con mucho cariño y respeto.\n\n¡Gracias por confiar en nosotros!`);
-            
-            // Resetea el formulario
-            form.reset();
-            
-            // Forzamos el reseteo visual del checkbox de anónimo (por si acaso)
-            const anonymousCheckbox = document.getElementById('petitionAnonymous');
-            const nameInput = document.getElementById('petitionName');
-            const courseInput = document.getElementById('petitionCourse');
-            if (anonymousCheckbox && anonymousCheckbox.checked) {
-                anonymousCheckbox.checked = false;
-                // Disparamos el evento 'change' manualmente para re-habilitar los campos
-                anonymousCheckbox.dispatchEvent(new Event('change'));
-            }
-
-        } else {
-            // Hubo un error en el servidor de Formspree
-            response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                    alert(data["errors"].map(error => error["message"]).join(", "));
-                } else {
-                    alert('Error al enviar la petición. Por favor, inténtalo de nuevo.');
-                }
-            });
-        }
-    })
-    .catch(error => {
-        // Hubo un error de red (ej. sin internet)
-        console.error('Error al enviar formulario:', error);
-        alert('Error de conexión. Por favor, revisa tu internet e inténtalo de nuevo.');
-    })
-    .finally(() => {
-        // Vuelve a habilitar el botón de envío y restaura el texto
-        if (submitButton) {
-            submitButton.disabled = false;
-            // Restauramos el texto original del botón (con el emoji)
-            submitButton.innerHTML = '<span class="text-xl mr-2">🙏</span> Enviar Petición';
-        }
-    });
+  alert("Te enviamos un código a tu mail institucional");
 }
 
-// Initialize
+// VERIFICA el código con el backend
+async function verifyCode(email, code) {
+  const res = await fetch("/api/verify-code", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email, code }),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    alert(data.error || "Código incorrecto");
+    return;
+  }
+
+  verificationTokenGlobal = data.verificationToken;
+  alert("Email verificado correctamente ✅");
+}
+
+// ENVÍA LA PETICIÓN FINAL (solo si email está verificado)
+async function handlePetitionSubmit(event) {
+  event.preventDefault();
+
+  if (!verificationTokenGlobal) {
+    alert("Primero verificá tu email con el código que te enviamos ✅");
+    return;
+  }
+
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const payload = {
+    email: formData.get("email"),
+    nombre: formData.get("nombre"),
+    curso: formData.get("curso"),
+    tipo: formData.get("tipo"),
+    mensaje: formData.get("mensaje"),
+    verificationToken: verificationTokenGlobal
+  };
+
+  const res = await fetch("/api/petition", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.error || "Error al enviar la petición");
+    return;
+  }
+
+  alert("Petición enviada exitosamente ❤️");
+  form.reset();
+}
+
+// ============================
+// INIT
+// ============================
+
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // Asumo que esta función existe en tu JS (del calendario)
+    // Inicializar calendario
     if (typeof generateCalendar === 'function') {
         generateCalendar();
     }
-    
-    // Asocia la función de envío al formulario
+
     const petitionForm = document.getElementById('petitionForm');
     
     if (petitionForm) {
         petitionForm.addEventListener('submit', handlePetitionSubmit);
 
-        // --- ¡NUEVA LÓGICA MEJORADA! ---
         // Maneja el conflicto entre "Anónimo" y los campos "required"
         const anonymousCheckbox = document.getElementById('petitionAnonymous');
         const nameInput = document.getElementById('petitionName');
@@ -397,20 +374,17 @@ document.addEventListener('DOMContentLoaded', function() {
             anonymousCheckbox.addEventListener('change', function() {
                 const isChecked = this.checked;
 
-                // Habilita/deshabilita y quita/pone 'required'
                 nameInput.required = !isChecked;
                 courseInput.required = !isChecked;
                 nameInput.disabled = isChecked;
                 courseInput.disabled = isChecked;
 
                 if (isChecked) {
-                    // Si es anónimo, borra los campos y añade un estilo visual
                     nameInput.value = '';
                     courseInput.value = '';
                     nameInput.classList.add('bg-gray-100', 'cursor-not-allowed');
                     courseInput.classList.add('bg-gray-100', 'cursor-not-allowed');
                 } else {
-                    // Si no es anónimo, quita el estilo visual
                     nameInput.classList.remove('bg-gray-100', 'cursor-not-allowed');
                     courseInput.classList.remove('bg-gray-100', 'cursor-not-allowed');
                 }
