@@ -1,9 +1,16 @@
 body {
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
 }
 
 .gradient-bg {
      background: #ffffff;
+     width: 100%;
 }
 
 .hover-lift {
@@ -54,4 +61,32 @@ body {
     background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
 }
 
-/* La llave '}' extra de aquí abajo fue eliminada */
+/* Mobile optimizations */
+@media (max-width: 640px) {
+    .hover-lift:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .proposal-card:hover {
+        transform: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .calendar-day:hover {
+        transform: scale(1.05);
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        word-break: break-word;
+    }
+
+    .page-section {
+        width: 100%;
+        overflow-x: hidden;
+    }
+}

@@ -39,8 +39,8 @@
             }
         }
     </script>
-    </head>
-    <body class="bg-gray-50 font-sans transition-colors duration-300">
+</head>
+<body class="bg-gray-50 font-sans transition-colors duration-300">
     
     <nav class="bg-white shadow-lg sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,6 +100,7 @@
                 <div class="text-center max-w-4xl mx-auto">
                     <h2 class="text-4xl md:text-5xl font-bold text-ethnos-black mb-6">¿Quiénes Somos?</h2>
                     <p class="text-lg text-ethnos-black mb-8">Un centro de estudiantes es el órgano de representación de todos los alumnos del colegio. Su función principal es ser la voz de los estudiantes ante las autoridades y trabajar para mejorar la vida escolar de toda la comunidad educativa.</p>
+
                 </div>
 
                 <div class="mt-16">
@@ -220,9 +221,8 @@
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-    <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Nuestras Propuestas ETHNOS</h2>
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Nuestras Propuestas ETHNOS</h2>
         <p class="text-lg text-ethnos-black max-w-3xl mx-auto">
             Consideramos que el Centro de Estudiantes debe ser un espacio de participación, crecimiento y diálogo.
             Por ello, nuestras propuestas buscan mejorar la convivencia, fortalecer los vínculos y contribuir al
@@ -763,90 +763,14 @@
             <p class="text-xl mb-6">
                 Tu voz también es importante. Si querés aportar una idea, actividad o mejora para la escuela, nos gustaría conocerla.
             </p>
-            <button
-                onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')"
-                class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift"
-            >
-                Compartí tu propuesta 💡
-            </button>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // según ancho de pantalla defino cuántas tarjetas se ven
-    function getVisibleCount() {
-        const w = window.innerWidth || document.documentElement.clientWidth;
-        if (w < 768) return 1;      // mobile: 1 tarjeta
-        if (w < 1024) return 2;     // md: 2 tarjetas
-        return 3;                   // lg+: 3 tarjetas
-    }
-
-    document.querySelectorAll(".proposals-carousel").forEach(function (carouselEl) {
-        const group = carouselEl.getAttribute("data-carousel");
-        const items = Array.from(carouselEl.querySelectorAll(".proposal-item"));
-        const prevBtn = document.querySelector('[data-carousel-prev="' + group + '"]');
-        const nextBtn = document.querySelector('[data-carousel-next="' + group + '"]');
-
-        let startIndex = 0;
-        let visibleCount = getVisibleCount();
-
-        function render() {
-            visibleCount = getVisibleCount();
-
-            // Si cambié de tamaño y el startIndex quedó muy alto, lo ajusto
-            if (startIndex + visibleCount > items.length) {
-                startIndex = Math.max(0, items.length - visibleCount);
-            }
-
-            items.forEach(function (item, index) {
-                if (index >= startIndex && index < startIndex + visibleCount) {
-                    item.classList.remove("hidden");
-                } else {
-                    item.classList.add("hidden");
-                }
-            });
-
-            if (prevBtn) {
-                prevBtn.disabled = startIndex === 0;
-            }
-            if (nextBtn) {
-                prevBtn && (nextBtn.disabled = startIndex + visibleCount >= items.length);
-            }
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener("click", function () {
-                if (startIndex > 0) {
-                    startIndex -= visibleCount;
-                    if (startIndex < 0) startIndex = 0;
-                    render();
-                }
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener("click", function () {
-                if (startIndex + visibleCount < items.length) {
-                    startIndex += visibleCount;
-                    render();
-                }
-            });
-        }
-
-        // Recalcular al cambiar el tamaño de pantalla (girar celu, etc.)
-        window.addEventListener("resize", render);
-
-        // Inicializar
-        render();
-    });
-});
-</script>
-
-
-
-
+                        <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift">
+                            Compartí tu propuesta 💡
+                        </button>
+                    </div>
+                </div>
+            </div>
+        
+        </div> 
         <div id="calendario" class="page-section hidden">
     <div class="bg-gray-100 py-20 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

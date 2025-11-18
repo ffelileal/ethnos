@@ -392,3 +392,73 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // según ancho de pantalla defino cuántas tarjetas se ven
+    function getVisibleCount() {
+        const w = window.innerWidth || document.documentElement.clientWidth;
+        if (w < 768) return 1;      // mobile: 1 tarjeta
+        if (w < 1024) return 2;     // md: 2 tarjetas
+        return 3;                   // lg+: 3 tarjetas
+    }
+
+    document.querySelectorAll(".proposals-carousel").forEach(function (carouselEl) {
+        const group = carouselEl.getAttribute("data-carousel");
+        const items = Array.from(carouselEl.querySelectorAll(".proposal-item"));
+        const prevBtn = document.querySelector('[data-carousel-prev="' + group + '"]');
+        const nextBtn = document.querySelector('[data-carousel-next="' + group + '"]');
+
+        let startIndex = 0;
+        let visibleCount = getVisibleCount();
+
+        function render() {
+            visibleCount = getVisibleCount();
+
+            // Si cambié de tamaño y el startIndex quedó muy alto, lo ajusto
+            if (startIndex + visibleCount > items.length) {
+                startIndex = Math.max(0, items.length - visibleCount);
+            }
+
+            items.forEach(function (item, index) {
+                if (index >= startIndex && index < startIndex + visibleCount) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+            });
+
+            if (prevBtn) {
+                prevBtn.disabled = startIndex === 0;
+            }
+            if (nextBtn) {
+                prevBtn && (nextBtn.disabled = startIndex + visibleCount >= items.length);
+            }
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener("click", function () {
+                if (startIndex > 0) {
+                    startIndex -= visibleCount;
+                    if (startIndex < 0) startIndex = 0;
+                    render();
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", function () {
+                if (startIndex + visibleCount < items.length) {
+                    startIndex += visibleCount;
+                    render();
+                }
+            });
+        }
+
+        // Recalcular al cambiar el tamaño de pantalla (girar celu, etc.)
+        window.addEventListener("resize", render);
+
+        // Inicializar
+        render();
+    });
+});

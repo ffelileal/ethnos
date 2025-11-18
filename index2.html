@@ -5,678 +5,1168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETHNOS - Centro de Estudiantes 2025-2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .proposal-card {
-            perspective: 1000px;
-            height: 200px;
-        }
-        
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-        
-        .proposal-card:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 0.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-        }
-        
-        .card-back {
-            transform: rotateY(180deg);
-            background: white;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo-placeholder {
-            background: linear-gradient(45deg, #3b82f6, #f97316);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 2rem;
-        }
-        
-        .section-divider {
-            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-            height: 2px;
-            margin: 2rem 0;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ethnos-red': '#852741',
+                        'ethnos-blue': '#0e2b67',
+                        'ethnos-gray': '#acb0b3',
+                        'ethnos-black': '#00000',
+                    }
+                }
             }
         }
-        
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #f97316;
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    </script>
+    </head>
+    <body class="bg-gray-50 font-sans transition-colors duration-300">
+    
+    <nav class="bg-white shadow-lg sticky top-0 z-50 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-3">
-                    <div class="logo-placeholder w-10 h-10">E</div>
-                    <span class="text-xl font-bold text-blue-600">ETHNOS</span>
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img src="assets/logo.png" alt="ETHNOS logo" class="h-12 w-12 object-contain rounded-md" onerror="this.style.display='none'">
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-xl font-bold text-ethnos-blue">ETHNOS</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#inicio" class="nav-link text-gray-700 hover:text-orange-500 font-medium">Inicio</a>
-                    <a href="#quienes-somos" class="nav-link text-gray-700 hover:text-orange-500 font-medium">Quiénes Somos</a>
-                    <a href="#objetivo" class="nav-link text-gray-700 hover:text-orange-500 font-medium">Objetivo</a>
-                    <a href="#propuestas" class="nav-link text-gray-700 hover:text-orange-500 font-medium">Propuestas</a>
-                    <a href="#contacto" class="nav-link text-gray-700 hover:text-orange-500 font-medium">Contacto</a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <button onclick="showPage('inicio', event)" class="nav-btn text-ethnos-blue bg-blue-50 px-3 py-2 rounded-md text-sm font-medium">Inicio</button>
+                        <button onclick="showPage('calendario', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Calendario</button>
+                        <button onclick="showPage('identidad', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Identidad</button>
+                        <button onclick="showPage('redes', event)" class="nav-btn text-ethnos-black hover:text-ethnos-blue px-3 py-2 rounded-md text-sm font-medium transition-colors">Redes</button>
+                    </div>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-ethnos-black hover:text-ethnos-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#inicio" class="block px-3 py-2 text-gray-700 hover:text-orange-500">Inicio</a>
-                <a href="#quienes-somos" class="block px-3 py-2 text-gray-700 hover:text-orange-500">Quiénes Somos</a>
-                <a href="#objetivo" class="block px-3 py-2 text-gray-700 hover:text-orange-500">Objetivo</a>
-                <a href="#propuestas" class="block px-3 py-2 text-gray-700 hover:text-orange-500">Propuestas</a>
-                <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:text-orange-500">Contacto</a>
+        
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t transition-colors duration-300">
+                <button onclick="showPage('inicio', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-blue bg-blue-50 rounded-md text-base font-medium w-full text-left">Inicio</button>
+                <button onclick="showPage('calendario', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Calendario</button>
+                <button onclick="showPage('identidad', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Identidad</button>
+                <button onclick="showPage('redes', event)" class="mobile-nav-btn block px-3 py-2 text-ethnos-black hover:text-ethnos-blue rounded-md text-base font-medium w-full text-left">Redes</button>
+                 
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="gradient-bg min-h-screen flex items-center pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <div class="animate-fade-in">
-                <!-- Logo editable -->
-                <div class="logo-placeholder w-32 h-32 mx-auto mb-8 text-6xl">
-                    ETHNOS
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">ETHNOS</h1>
-                <p class="text-2xl md:text-3xl mb-8 font-light">"Unión y convivencia con el colegio"</p>
-                
-                <div class="max-w-4xl mx-auto mb-12">
-                    <p class="text-lg md:text-xl leading-relaxed mb-6">
-                        <strong>ETHNOS</strong> significa <em>pueblo</em> y <em>comunidad</em>. Es un nombre corto, fácil de recordar, 
-                        original y con fuerza que simboliza la unión y cercanía entre estudiantes.
-                    </p>
-                    <p class="text-lg md:text-xl leading-relaxed">
-                        Representamos a todos los alumnos con energía, organización y compromiso para el período 2025-2026.
-                    </p>
-                </div>
-                
-                <a href="https://instagram.com/ethnos_ce" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    <i class="fab fa-instagram mr-3 text-xl"></i>
-                    Seguinos en Instagram
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quiénes Somos -->
-    <section id="quienes-somos" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Quiénes Somos</h2>
-                <div class="section-divider"></div>
-            </div>
+    <div id="page-content">
+    
+        <div id="inicio" class="page-section">
             
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
-                <div class="card-hover bg-blue-50 p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold text-blue-600 mb-4">¿Qué es un Centro de Estudiantes?</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Es un espacio de representación estudiantil que busca defender, organizar y acompañar a todos los alumnos 
-                        en sus inquietudes, necesidades y propuestas. Somos la voz de los estudiantes ante las autoridades del colegio.
+            <div class="gradient-bg min-h-screen flex flex-col items-center justify-center text-center fade-in p-4">
+                <div class="mb-8">
+                    <img src="assets/logo.png" alt="ETHNOS logo" class="mx-auto h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80 object-contain rounded-md" loading="lazy" onerror="this.style.display='none'">
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold text-grey mb-6">ETHNOS</h1>
+                <h3 class="text-lg md:text-2xl font-medium text-ethnos-red text-center italic">"CADA VOZ CUENTA, CADA CURSO IMPORTA"</h3>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-ethnos-black mb-6">¿Quiénes Somos?</h2>
+                    <p class="text-lg text-ethnos-black mb-8">Un centro de estudiantes es el órgano de representación de todos los alumnos del colegio. Su función principal es ser la voz de los estudiantes ante las autoridades y trabajar para mejorar la vida escolar de toda la comunidad educativa.</p>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-12">Nuestro Equipo</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
+                        <div class="bg-gradient-to-br from-ethnos-blue to-blue-600 rounded-xl p-6 text-white text-center hover-lift">
+                            <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-ethnos-blue">FP</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Felipe Potkova</h4>
+                            <p class="text-blue-100 font-medium">Presidente</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-ethnos-gray to-ethnos-blue rounded-xl p-6 text-white text-center hover-lift">
+                            <div class="w-20 h-20 bg-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-2xl font-bold text-ethnos-gray">AH</span>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">Ana Heredia</h4>
+                            <p class="text-red-100 font-medium">Vicepresidente</p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-ethnos-blue">📝</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Actas</h4>
+                            <p class="text-ethnos-black">Isabella Anthonioz</p>
+                            <p class="text-ethnos-black">Jazmín Begue</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-green-600">💰</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Finanzas</h4>
+                            <p class="text-ethnos-black">Candelaria Griffo</p>
+                            <p class="text-ethnos-black">Pablo Azzolini</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-purple-600">📢</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Difusión</h4>
+                            <p class="text-ethnos-black">Leticia Bee Sellares</p>
+                            <p class="text-ethnos-black">Trinidad Ferreyra</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-pink-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-pink-600">🎭</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Cultura</h4>
+                            <p class="text-ethnos-black">Guadalupe Vaccaro</p>
+                            <p class="text-ethnos-black">Lucía Areco</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-red-600">⚽</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Deportes</h4>
+                            <p class="text-ethnos-black">Tomás Bordenave</p>
+                            <p class="text-ethnos-black">Uma Repetti</p>
+                        </div>
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-6 text-center hover-lift transition-colors duration-300">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-lg font-bold text-yellow-600">🙏</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-ethnos-blue mb-2">Secretaría de Pastoral</h4>
+                            <p class="text-ethnos-black">Valentina Racca</p>
+                            <p class="text-ethnos-black">Lourdes Ragazzini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20 transition-colors duration-300">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center">
+                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-12">Nuestro Objetivo</h2>
+                        <div class="max-w-4xl mx-auto">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 hover-lift transition-colors duration-300">
+                                <div class="mb-8">
+                                    <svg class="mx-auto h-24 w-24 text-ethnos-red" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-ethnos-black leading-relaxed font-medium">
+                                    "Nuestro objetivo principal es la <span class="text-ethnos-blue font-bold">unión y convivencia</span> con el colegio. Queremos mejorar la <span class="text-ethnos-gray font-bold">comunicación entre cursos</span> y resolver problemáticas comunes, representando con <span class="text-ethnos-blue font-bold">cercanía y confianza</span> a todos los estudiantes."
+                                </blockquote>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-ethnos-blue rounded-full mx-auto mb-4 flex items-center justify-center">
+                                        <span class="text-2xl">🤝</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-ethnos-blue mb-2">Unión</h3>
+                                    <p class="text-ethnos-black">Conectamos a todos los estudiantes como una verdadera comunidad</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-ethnos-gray rounded-full mx-auto mb-4 flex items-center justify-center">
+                                        <span class="text-2xl">💬</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-ethnos-blue mb-2">Comunicación</h3>
+                                    <p class="text-ethnos-black">Facilitamos el diálogo entre cursos y con las autoridades</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-ethnos-blue rounded-full mx-auto mb-4 flex items-center justify-center">
+                                        <span class="text-2xl">❤️</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-ethnos-blue mb-2">Cercanía</h3>
+                                    <p class="text-ethnos-black">Representamos con confianza y proximidad a cada estudiante</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Nuestras Propuestas ETHNOS</h2>
+        <p class="text-lg text-ethnos-black max-w-3xl mx-auto">
+            Consideramos que el Centro de Estudiantes debe ser un espacio de participación, crecimiento y diálogo.
+            Por ello, nuestras propuestas buscan mejorar la convivencia, fortalecer los vínculos y contribuir al
+            bienestar general de toda la comunidad educativa.
+        </p>
+    </div>
+
+    <div class="space-y-12">
+        <!-- 📚 Académicas y Formativas -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">📚</span>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Académicas y Formativas</h3>
+                    <p class="text-ethnos-black">
+                        Fortalecer el aprendizaje, la expresión oral y el pensamiento crítico de las y los estudiantes.
                     </p>
                 </div>
-                
-                <div class="card-hover bg-orange-50 p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold text-orange-600 mb-4">¿Por qué ETHNOS?</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Elegimos este nombre porque transmite comunidad, unión y fuerza. Es corto, fácil de recordar y original. 
-                        Refleja nuestro espíritu de representar a todos los estudiantes como una verdadera comunidad unida.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Integrantes -->
-            <div class="mb-12">
-                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">Integrantes de la lista ETHNOS</h3>
-                
-                <!-- Comisión Directiva -->
-                <div class="mb-12">
-                    <h4 class="text-2xl font-bold text-center text-blue-600 mb-8">Comisión Directiva</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        <!-- Presidente -->
-                        <div class="card-hover bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-2xl text-center border-4 border-blue-300 shadow-2xl">
-                            <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                                <i class="fas fa-crown text-4xl"></i>
-                            </div>
-                            <h5 class="font-bold text-2xl mb-3">Presidente</h5>
-                            <p class="text-blue-100 text-xl font-semibold">Felipe Potkova</p>
-                        </div>
-                        
-                        <!-- Vicepresidente -->
-                        <div class="card-hover bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 rounded-2xl text-center border-4 border-orange-300 shadow-2xl">
-                            <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                                <i class="fas fa-user-tie text-4xl"></i>
-                            </div>
-                            <h5 class="font-bold text-2xl mb-3">Vicepresidente</h5>
-                            <p class="text-orange-100 text-xl font-semibold">Ana Heredia</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Secretarías -->
-                <div class="mb-12">
-                    <h4 class="text-2xl font-bold text-center text-gray-700 mb-8">Secretarías</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Actas -->
-                        <div class="card-hover bg-gradient-to-br from-gray-500 to-gray-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-file-alt text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Actas</h5>
-                            <p class="text-gray-100 font-medium">Isabella Anthonioz</p>
-                            <p class="text-gray-100 font-medium">Jazmín Begue</p>
-                        </div>
-                        
-                        <!-- Finanzas -->
-                        <div class="card-hover bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-dollar-sign text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Finanzas</h5>
-                            <p class="text-green-100 font-medium">Guadalupe Vaccaro</p>
-                            <p class="text-green-100 font-medium">Pablo Azzolini</p>
-                        </div>
-                        
-                        <!-- Difusión -->
-                        <div class="card-hover bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-bullhorn text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Difusión</h5>
-                            <p class="text-purple-100 font-medium">Leticia Bee Sellares</p>
-                            <p class="text-purple-100 font-medium">Trinidad Ferreyra</p>
-                        </div>
-                        
-                        <!-- Cultura -->
-                        <div class="card-hover bg-gradient-to-br from-pink-500 to-pink-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-palette text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Cultura</h5>
-                            <p class="text-pink-100 font-medium">Candelaria Griffo</p>
-                            <p class="text-pink-100 font-medium">Lucía Areco</p>
-                        </div>
-                        
-                        <!-- Deportes -->
-                        <div class="card-hover bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-futbol text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Deportes</h5>
-                            <p class="text-red-100 font-medium">Tomás Bordenave</p>
-                            <p class="text-red-100 font-medium">Uma Repetti</p>
-                        </div>
-                        
-                        <!-- Pastoral -->
-                        <div class="card-hover bg-gradient-to-br from-indigo-500 to-indigo-600 text-white p-6 rounded-xl text-center">
-                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                <i class="fas fa-pray text-2xl"></i>
-                            </div>
-                            <h5 class="font-bold text-lg mb-2">Secretaría de Pastoral</h5>
-                            <p class="text-indigo-100 font-medium">Valentina Racca</p>
-                            <p class="text-indigo-100 font-medium">Lourdes Ragazzini</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Suplentes -->
-                <div class="mb-12">
-                    <h4 class="text-2xl font-bold text-center text-gray-700 mb-8">Suplentes</h4>
-                    <div class="max-w-2xl mx-auto">
-                        <div class="card-hover bg-gradient-to-br from-yellow-500 to-yellow-600 text-white p-8 rounded-xl text-center">
-                            <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                                <i class="fas fa-users text-3xl"></i>
-                            </div>
-                            <h5 class="font-bold text-xl mb-4">Suplentes</h5>
-                            <p class="text-yellow-100 text-lg">
-                                Los suplentes serán anunciados próximamente y estarán disponibles para apoyar en todas las secretarías según las necesidades del centro de estudiantes.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Objetivo -->
-    <section id="objetivo" class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-12">Nuestro Objetivo</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
-                    <p class="text-xl md:text-2xl text-white leading-relaxed mb-6">
-                        "Nuestro objetivo principal es la <strong>unión y convivencia con el colegio</strong>. 
-                        Surgimos del deseo de mejorar y solucionar problemáticas comunes que antes no eran tratadas, 
-                        como la comunicación entre cursos, y de representar a los estudiantes con 
-                        <strong>cercanía, credibilidad y confianza</strong>."
-                    </p>
-                    <div class="flex justify-center space-x-8 mt-8">
-                        <div class="text-center">
-                            <i class="fas fa-handshake text-4xl text-orange-300 mb-2"></i>
-                            <p class="text-white font-semibold">Unión</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-heart text-4xl text-orange-300 mb-2"></i>
-                            <p class="text-white font-semibold">Cercanía</p>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-shield-alt text-4xl text-orange-300 mb-2"></i>
-                            <p class="text-white font-semibold">Confianza</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Propuestas -->
-    <section id="propuestas" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Nuestras Propuestas</h2>
-                <div class="section-divider"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Conocé todas las iniciativas que tenemos preparadas para mejorar la experiencia estudiantil
-                </p>
             </div>
 
-            <!-- Propuestas Destacadas - Grilla Dinámica -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Propuestas Destacadas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
-                    <!-- Feria del Libro - Bloque Grande -->
-                    <div class="card-hover bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-2xl shadow-lg md:col-span-2 lg:row-span-2 flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-book text-6xl mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-4 uppercase tracking-wide">FERIA DEL LIBRO</h4>
-                        <p class="text-blue-100 text-lg leading-relaxed">Intercambio de apuntes y textos entre cursos para facilitar el estudio</p>
-                    </div>
+            <div class="relative">
+                <!-- Botones carrusel -->
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="academicas"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="academicas"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
 
-                    <!-- Semana de la Dulzura -->
-                    <div class="card-hover bg-gradient-to-br from-pink-500 to-pink-600 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-heart text-4xl mb-4"></i>
-                        <h4 class="text-lg font-bold mb-3 uppercase tracking-wide">SEMANA DE LA DULZURA</h4>
-                        <p class="text-pink-100 text-sm">Stands y combos de regalos para recaudar fondos</p>
-                    </div>
-
-                    <!-- Torneos Deportivos -->
-                    <div class="card-hover bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-trophy text-4xl mb-4"></i>
-                        <h4 class="text-lg font-bold mb-3 uppercase tracking-wide">TORNEOS DEPORTIVOS</h4>
-                        <p class="text-red-100 text-sm">Competencias de voley, fútbol, ping pong y cultura general</p>
-                    </div>
-
-                    <!-- Pizarras de Cumpleaños -->
-                    <div class="card-hover bg-gradient-to-br from-yellow-500 to-orange-500 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-birthday-cake text-4xl mb-4"></i>
-                        <h4 class="text-lg font-bold mb-3 uppercase tracking-wide">PIZARRAS DE CUMPLEAÑOS</h4>
-                        <p class="text-yellow-100 text-sm">Un espacio visible para celebrar a cada curso</p>
-                    </div>
-
-                    <!-- Cine en el Colegio - Bloque Grande -->
-                    <div class="card-hover bg-gradient-to-br from-purple-500 to-indigo-600 text-white p-8 rounded-2xl shadow-lg md:col-span-2 flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-film text-5xl mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-4 uppercase tracking-wide">CINE EN EL COLEGIO</h4>
-                        <p class="text-purple-100 text-lg leading-relaxed">Proyección de películas con pochoclos para recaudar fondos y divertirse</p>
-                    </div>
-
-                    <!-- Mejoras de Infraestructura -->
-                    <div class="card-hover bg-gradient-to-br from-gray-500 to-gray-600 text-white p-6 rounded-2xl shadow-lg lg:col-span-2 flex flex-col justify-center items-center text-center">
-                        <i class="fas fa-tools text-4xl mb-4"></i>
-                        <h4 class="text-lg font-bold mb-3 uppercase tracking-wide">MEJORAS DE INFRAESTRUCTURA</h4>
-                        <p class="text-gray-100 text-sm">Cortinas, tachos diferenciados, espejos de baños, plantas y aromatizadores</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Propuestas Adicionales - Formato Desplegable -->
-            <div>
-                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Más Propuestas</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Académicas -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-                                <i class="fas fa-graduation-cap text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Académicas</h4>
-                                <p class="text-blue-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-blue-600 mb-4">Propuestas Académicas</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mr-2 mt-1 text-xs"></i>Modelo ONU</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mr-2 mt-1 text-xs"></i>Charlas de orientación vocacional</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mr-2 mt-1 text-xs"></i>Kahoots educativos</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-blue-500 mr-2 mt-1 text-xs"></i>Torneos de cultura general</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Culturales -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-purple-500 to-purple-600 text-white">
-                                <i class="fas fa-theater-masks text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Culturales</h4>
-                                <p class="text-purple-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-purple-600 mb-4">Propuestas Culturales</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mr-2 mt-1 text-xs"></i>Huerta escolar</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mr-2 mt-1 text-xs"></i>Padrinaje de ingresantes</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mr-2 mt-1 text-xs"></i>Campamentos y retiros</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mr-2 mt-1 text-xs"></i>Actividades especiales por el mundial</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-purple-500 mr-2 mt-1 text-xs"></i>Lecturas comunitarias</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sociales -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-orange-500 to-orange-600 text-white">
-                                <i class="fas fa-users text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Sociales</h4>
-                                <p class="text-orange-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-orange-600 mb-4">Propuestas Sociales</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mr-2 mt-1 text-xs"></i>Flores amarillas en primavera</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mr-2 mt-1 text-xs"></i>Quiz divertidos por curso</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mr-2 mt-1 text-xs"></i>Votación al mejor compañero</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mr-2 mt-1 text-xs"></i>Música en almuerzos</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-orange-500 mr-2 mt-1 text-xs"></i>Calendario estudiantil en el patio</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recaudación -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-green-500 to-green-600 text-white">
-                                <i class="fas fa-dollar-sign text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Recaudación</h4>
-                                <p class="text-green-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-green-600 mb-4">Propuestas de Recaudación</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1 text-xs"></i>Venta de ensaladas de frutas</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1 text-xs"></i>Jugos y chocolates en invierno</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1 text-xs"></i>Kits de librería</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mr-2 mt-1 text-xs"></i>Torneos pagos</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Deportivas -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-red-500 to-red-600 text-white">
-                                <i class="fas fa-futbol text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Deportivas</h4>
-                                <p class="text-red-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-red-600 mb-4">Propuestas Deportivas</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mr-2 mt-1 text-xs"></i>Mejoras en torneos de voley</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mr-2 mt-1 text-xs"></i>Papi fútbol con padres</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mr-2 mt-1 text-xs"></i>Torneos de ping pong y metegol</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-red-500 mr-2 mt-1 text-xs"></i>Competencias alumnos vs profesores</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bienestar -->
-                    <div class="proposal-card">
-                        <div class="card-inner">
-                            <div class="card-front bg-gradient-to-r from-teal-500 to-teal-600 text-white">
-                                <i class="fas fa-leaf text-4xl mb-4"></i>
-                                <h4 class="text-xl font-bold uppercase tracking-wide">Bienestar</h4>
-                                <p class="text-teal-100 text-sm mt-2">Hover para ver más</p>
-                            </div>
-                            <div class="card-back">
-                                <h4 class="text-lg font-bold text-teal-600 mb-4">Propuestas de Bienestar</h4>
-                                <ul class="space-y-2 text-gray-700 text-sm text-left">
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-teal-500 mr-2 mt-1 text-xs"></i>Revisión de computadoras</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-teal-500 mr-2 mt-1 text-xs"></i>Página web del colegio</li>
-                                    <li class="flex items-start"><i class="fas fa-check-circle text-teal-500 mr-2 mt-1 text-xs"></i>Organización del mate</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Contacto</h2>
-                <div class="section-divider"></div>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    ¿Tenés consultas, quejas o dudas? ¡Estamos acá para escucharte!
-                </p>
-            </div>
-
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-br from-blue-50 to-orange-50 rounded-2xl p-8 md:p-12 text-center">
-                    <div class="mb-8">
-                        <i class="fas fa-comments text-6xl text-blue-500 mb-6"></i>
-                        <h3 class="text-3xl font-bold text-gray-800 mb-4">¡Queremos escucharte!</h3>
-                        <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                            Para cualquier <strong>consulta</strong>, <strong>queja</strong> o <strong>duda</strong> que tengas, 
-                            podés comunicarte directamente con nosotros a través de nuestro Instagram oficial.
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="academicas">
+                    <!-- PRIORIDAD: Modelo ONU -->
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🌍</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Modelo de Naciones Unidas</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Implementar actividades estilo <strong>Modelo ONU</strong> para 4.º y 5.º año, articulando asignaturas del área
+                            de Ciencias Sociales (Historia y Geografía). El objetivo es que las y los estudiantes aprendan a investigar,
+                            organizar información, expresarse ante un público y defender sus ideas con fundamento y respeto.
                         </p>
                     </div>
 
-                    <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
-                        <div class="flex items-center justify-center mb-6">
-                            <div class="bg-gradient-to-r from-pink-500 to-purple-600 rounded-full p-4 mr-4">
-                                <i class="fab fa-instagram text-white text-3xl"></i>
-                            </div>
-                            <div class="text-left">
-                                <h4 class="text-xl font-bold text-gray-800">Instagram Oficial</h4>
-                                <p class="text-gray-600">@ethnos_ce</p>
-                            </div>
-                        </div>
-                        
-                        <a href="https://instagram.com/ethnos_ce" target="_blank" rel="noopener noreferrer" 
-                           class="inline-flex items-center bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                            <i class="fab fa-instagram mr-3 text-xl"></i>
-                            Escribinos por Instagram
-                        </a>
+                    <!-- PRIORIDAD: Charlas formativas -->
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">💬</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Charlas formativas</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Desarrollar <strong>charlas y espacios de reflexión</strong> sobre temas que actualmente interpelan a
+                            adolescentes y adultos, tales como Educación Sexual Integral, prevención de adicciones y primeros auxilios,
+                            entre otros. Buscamos brindar información clara y responsable para toda la comunidad educativa.
+                        </p>
                     </div>
 
-                    <div class="grid md:grid-cols-3 gap-6 text-center">
-                        <div class="bg-blue-100 rounded-lg p-6">
-                            <i class="fas fa-question-circle text-3xl text-blue-600 mb-3"></i>
-                            <h5 class="font-bold text-blue-800 mb-2">Consultas</h5>
-                            <p class="text-blue-700 text-sm">Preguntanos sobre nuestras propuestas o actividades</p>
-                        </div>
-                        
-                        <div class="bg-orange-100 rounded-lg p-6">
-                            <i class="fas fa-exclamation-triangle text-3xl text-orange-600 mb-3"></i>
-                            <h5 class="font-bold text-orange-800 mb-2">Quejas</h5>
-                            <p class="text-orange-700 text-sm">Contanos si hay algo que no te gusta o querés cambiar</p>
-                        </div>
-                        
-                        <div class="bg-green-100 rounded-lg p-6">
-                            <i class="fas fa-lightbulb text-3xl text-green-600 mb-3"></i>
-                            <h5 class="font-bold text-green-800 mb-2">Ideas</h5>
-                            <p class="text-green-700 text-sm">Compartí tus ideas para mejorar el colegio</p>
-                        </div>
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">📖</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Feria de apuntes</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Realizar, al inicio del ciclo lectivo, una <strong>feria de apuntes y materiales</strong> entre cursos, para
+                            que se puedan comprar y vender cuadernos, carpetas y resúmenes de años anteriores, promoviendo el cuidado de los
+                            recursos y facilitando el acceso a material de estudio a menor costo.
+                        </p>
                     </div>
 
-                    <div class="mt-8 p-6 bg-gray-100 rounded-lg">
-                        <p class="text-gray-700 font-medium">
-                            <i class="fas fa-clock text-gray-500 mr-2"></i>
-                            Respondemos todos los mensajes lo más rápido posible. ¡Tu opinión es importante para nosotros!
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎓</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Orientación vocacional</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Proponer <strong>espacios de orientación vocacional</strong> para estudiantes de 5.º y 6.º año, con el fin de
+                            acompañar el proceso de elección de carrera y reducir la incertidumbre frente al ingreso a los estudios superiores
+                            o al mundo del trabajo.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🏛️</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Visita a la UNC</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Gestionar, siempre que sea posible, una visita a la <strong>Universidad Nacional de Córdoba</strong> en el marco de
+                            la expo-carreras, para conocer la universidad pública, sus propuestas académicas y sus espacios, constituyéndose
+                            en una herramienta más para la elección del futuro formativo.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎮</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Kahoots por curso</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Realizar actividades lúdicas con <strong>Kahoot</strong> y otros recursos interactivos, vinculados a contenidos
+                            trabajados en clase. Durante un período del año, se visitará cada curso una vez por semana para jugar, reforzar
+                            aprendizajes y reconocer a los grupos que se destaquen.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🧠</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Torneos de cultura general</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Incorporar <strong>torneos de cultura general</strong> en instancias como la feria de ciencias, con stands a cargo
+                            del Centro de Estudiantes y del Modelo ONU. Quienes respondan correctamente recibirán un reconocimiento simbólico
+                            por su desempeño.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex items-center justify-center space-x-3 mb-6">
-                    <div class="logo-placeholder w-12 h-12 text-2xl">E</div>
-                    <span class="text-2xl font-bold">ETHNOS</span>
+        <!-- 🎭 Culturales -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">🎭</span>
                 </div>
-                <p class="text-gray-300 mb-6">Centro de Estudiantes 2025-2026</p>
-                <p class="text-gray-400 mb-8">"Unión y convivencia con el colegio"</p>
-                
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://instagram.com/ethnos_ce" target="_blank" rel="noopener noreferrer" 
-                       class="text-gray-300 hover:text-pink-400 transition-colors duration-300">
-                        <i class="fab fa-instagram text-2xl"></i>
-                    </a>
-                </div>
-                
-                <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-400 text-sm">
-                        © 2024 ETHNOS - Centro de Estudiantes. Todos los derechos reservados.
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Culturales</h3>
+                    <p class="text-ethnos-black">
+                        Promover la expresión artística, el sentido de pertenencia institucional y la vida comunitaria.
                     </p>
                 </div>
             </div>
+
+            <div class="relative">
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="culturales"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="culturales"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="culturales">
+                    <!-- PRIORIDAD: Semanas temáticas -->
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎁</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Semanas temáticas y stands</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Dar continuidad a las <strong>semanas temáticas</strong> (Pascua, Semana de la Dulzura, entre otras) instalando
+                            un stand en el patio donde las y los estudiantes puedan adquirir combos de regalos que luego serán entregados por
+                            el Centro. Esto permite recaudar fondos y otorgar un carácter especial a la vida escolar cotidiana.
+                        </p>
+                    </div>
+
+                    <!-- PRIORIDAD: Mundial 2026 -->
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🥅</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Proyecto Mundial 2026</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Con motivo del <strong>Mundial 2026</strong>, cada curso decorará su aula con temática de Argentina y de otros
+                            países asignados al azar. Durante la semana en la que juegue la Selección, se evaluará la creatividad, el trabajo
+                            grupal y el clima generado en cada aula. El curso más destacado recibirá un reconocimiento especial.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎨</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Mural institucional</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Proponer la realización de un <strong>mural en el predio deportivo</strong>, con participación estudiantil, para
+                            embellecer el espacio, hacerlo más colorido y dejar la huella del Centro de Estudiantes en la institución.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🤝</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Padrinaje 1.º y 6.º año</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Continuar y fortalecer la tradición de <strong>padrinaje entre 1.º y 6.º año</strong>, organizando actividades
+                            que acompañen el ingreso al nivel secundario, reduzcan la ansiedad inicial y faciliten la integración de quienes
+                            comienzan esta etapa.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">⛪</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Joclas más extendidos</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Proponer que los <strong>Joclas</strong> se extiendan desde la mañana hasta la tarde, siempre que haya docentes
+                            disponibles para el acompañamiento y se puedan organizar adecuadamente los tiempos, favoreciendo la vivencia
+                            espiritual y comunitaria propia de la identidad claretiana.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🏕️</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Retiro de convivencia 3.º año</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Impulsar, en la medida de lo posible, un <strong>retiro o campamento de convivencia</strong> para 3.º año, con
+                            el fin de fortalecer la integración entre las divisiones antes de la elección de orientación en 4.º año.
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">📖</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Lectura de intenciones</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Mantener y potenciar la <strong>lectura de intenciones</strong> por la mañana, como espacio de oración y
+                            acompañamiento comunitario por distintas realidades, fortaleciendo la dimensión pastoral de la escuela.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+        <!-- ⚽ Deportivas -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">⚽</span>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Deportivas</h3>
+                    <p class="text-ethnos-black">
+                        Impulsar el trabajo en equipo, el cuidado de la salud y el espíritu deportivo.
+                    </p>
+                </div>
+            </div>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
+            <div class="relative">
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="deportivas"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="deportivas"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
 
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="deportivas">
+                    <!-- PRIORIDAD: Torneos -->
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🏐</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Torneos de fútbol y vóley</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Organizar 1 o 2 <strong>torneos deportivos anuales</strong> con competencias de fútbol y vóley. Se realizarán
+                            instancias diferenciadas para ciclo básico y ciclo orientado, promoviendo la participación de todos los cursos.
+                        </p>
+                    </div>
 
+                    <!-- PRIORIDAD: Reconocimientos -->
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🏅</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Reconocimientos deportivos</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Destacar los <strong>logros deportivos</strong> de las y los estudiantes que representen a la institución o que
+                            obtengan resultados relevantes en clubes u otros espacios, otorgando menciones y pequeños presentes en formación,
+                            valorando su esfuerzo, disciplina y compromiso.
+                        </p>
+                    </div>
 
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-xl');
-            } else {
-                nav.classList.remove('shadow-xl');
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🏓</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Ping pong y metegol en recreos</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Continuar con los <strong>torneos de ping pong</strong> e incorporar torneos de <strong>metegol</strong> durante
+                            los recreos, como propuesta recreativa que favorece la integración, el respeto por las reglas y el disfrute
+                            compartido.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">📆</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Semana del Profesor y del Estudiante</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Unificar los festejos del <strong>Día del Profesor</strong> y del <strong>Día del Estudiante</strong> en una
+                            misma semana, con coreografías, actividades deportivas y culturales, juegos y propuestas en las que participen
+                            tanto docentes como estudiantes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🎉 Sociales e Integración -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">🎉</span>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Propuestas Sociales e Integración Estudiantil</h3>
+                    <p class="text-ethnos-black">
+                        Favorecer la integración entre cursos, el reconocimiento mutuo y un clima institucional positivo.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="sociales"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="sociales"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="sociales">
+                    <!-- PRIORIDAD: Cartelera institucional -->
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">📌</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Cartelera institucional</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Además de los medios digitales, incorporar una <strong>cartelera en el patio</strong> con información relevante
+                            para toda la comunidad: actividades del Centro de Estudiantes, fechas importantes, menciones destacadas y otros
+                            avisos. De este modo, la comunicación será clara y accesible para todos los cursos.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🌼</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Flores amarillas en septiembre</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Durante la semana del 21 de septiembre, disponer un stand para que las y los estudiantes puedan encargar
+                            <strong>flores amarillas</strong> y enviarlas a otras personas del colegio, con nombre o de manera anónima.
+                            El Centro se encargará de la entrega, promoviendo gestos de afecto y reconocimiento.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🧑‍🤝‍🧑</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Mejor compañero/a</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Al finalizar el año, cada curso elegirá, mediante votación, a su <strong>mejor compañero o compañera</strong>.
+                            En el acto de cierre, junto a la tutoría, se entregará una mención especial a quienes se destaquen por su
+                            solidaridad, respeto y compromiso con el grupo.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎶</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Música en recreos y almuerzos</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Dar continuidad a la <strong>música en los recreos</strong> e incorporarla, cuidadosamente seleccionada, en los
+                            horarios de almuerzo, a fin de generar un ambiente más ameno y de encuentro entre los distintos cursos.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎂</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Pizarras de cumpleaños por curso</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Colocar <strong>pizarras borrables</strong> en cada curso para registrar los cumpleaños mes a mes. Al finalizar
+                            el año se borrarán para volver a utilizarse, favoreciendo el reconocimiento y la celebración de cada estudiante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🛠️ Infraestructura y Bienestar -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">🛠️</span>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Infraestructura y Bienestar</h3>
+                    <p class="text-ethnos-black">
+                        Propuestas concretas para mejorar el entorno escolar y las condiciones cotidianas de estudio.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="infraestructura"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="infraestructura"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="infraestructura">
+                    <!-- PRIORIDAD: Kits -->
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">📦</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Kits de materiales por curso</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Incorporar una <strong>caja de materiales por curso</strong> con elementos básicos de librería (cinta ancha,
+                            plasticola grande, abrochadora, grapas, cartulinas y afiches de papel madera) para que las actividades áulicas
+                            no dependan únicamente de que cada estudiante lleve todo de manera individual.
+                        </p>
+                    </div>
+
+                    <!-- PRIORIDAD: Condimentos y utensilios -->
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🍽️</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Condimentos y utensilios en comedor</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Incorporar en el comedor condimentos de uso común (mayonesa, ketchup, mostaza, sal, aceite y aceto) y
+                            <strong>cubiertos descartables</strong>, para que estén disponibles cuando alguna persona lo necesite y así
+                            mejorar la experiencia en el espacio de almuerzo.
+                        </p>
+                    </div>
+
+                    <!-- PRIORIDAD: Página web -->
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">💻</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Página web del Centro de Estudiantes</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Contar con una <strong>página web institucional del Centro de Estudiantes</strong>, complementaria a las redes
+                            sociales, en la cual se pueda acceder en cualquier momento a información sobre nuestras comisiones, objetivos,
+                            valores y pilares, así como a un calendario con cumpleaños, eventos, feriados y actividades relevantes. Buscamos
+                            que la comunicación sea clara, ordenada y permanente.
+                        </p>
+                    </div>
+
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🌬️</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Aromatizantes en aulas y baños</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Proponer la incorporación de <strong>aromatizantes de ambiente</strong> en baños y, cuando sea posible,
+                            difusores o humidificadores en algunas aulas, para favorecer un ambiente más agradable, especialmente en épocas
+                            de altas temperaturas.
+                        </p>
+                    </div>
+
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🌱</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Más plantas en el patio</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Incorporar más <strong>plantas en el patio y espacios comunes</strong>, con el propósito de generar un entorno
+                            más fresco, amigable y vinculado al cuidado de la casa común.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 💵 Finanzas -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 hover-lift">
+            <div class="flex items-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mr-6">
+                    <span class="text-3xl">💵</span>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold text-ethnos-blue">Comisión de Finanzas</h3>
+                    <p class="text-ethnos-black">
+                        Propuestas de recaudación ordenadas, transparentes y en articulación con proyectos institucionales.
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-prev="finanzas"
+                >
+                    <span class="sr-only">Propuestas anteriores</span>
+                    ‹
+                </button>
+                <button
+                    type="button"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-ethnos-blue text-white shadow-lg absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    data-carousel-next="finanzas"
+                >
+                    <span class="sr-only">Propuestas siguientes</span>
+                    ›
+                </button>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 proposals-carousel" data-carousel="finanzas">
+                    <!-- PRIORIDAD: Ventas -->
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🥤</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Ventas estacionales</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Realizar <strong>ventas breves y planificadas</strong> de alimentos y bebidas en determinadas semanas del año:
+                            jugos congelados y limonadas en días de calor intenso; café, café con leche y chocolatada caliente en jornadas
+                            frías. Se procurará no superponerse con la actividad de la cantina institucional.
+                        </p>
+                    </div>
+
+                    <!-- PRIORIDAD: Inscripciones y aportes solidarios -->
+                    <div class="bg-green-50 rounded-xl p-6 text-center proposal-item">
+                        <span class="text-4xl mb-3 block">🎟️</span>
+                        <h4 class="font-bold text-ethnos-blue mb-2">Inscripciones y aportes solidarios</h4>
+                        <p class="text-sm text-ethnos-black">
+                            Establecer una <strong>inscripción accesible</strong> para los torneos deportivos, de metegol y de ping pong,
+                            destinada a financiar las propuestas del Centro. Un porcentaje de lo recaudado se donará a la obra de teatro de
+                            6.º año y a proyectos solidarios como <em>“Mi hermano es otro yo”</em> de 4.º año, fortaleciendo así el compromiso
+                            con iniciativas del colegio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA final -->
+    <div class="mt-16 text-center">
+        <div class="bg-gradient-to-r from-ethnos-blue to-ethnos-gray rounded-2xl p-8 text-white">
+            <h3 class="text-3xl font-bold mb-4">¿Tenés una propuesta nueva?</h3>
+            <p class="text-xl mb-6">
+                Tu voz también es importante. Si querés aportar una idea, actividad o mejora para la escuela, nos gustaría conocerla.
+            </p>
+            <button
+                onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')"
+                class="bg-white text-ethnos-blue hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift"
+            >
+                Compartí tu propuesta 💡
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // según ancho de pantalla defino cuántas tarjetas se ven
+    function getVisibleCount() {
+        const w = window.innerWidth || document.documentElement.clientWidth;
+        if (w < 768) return 1;      // mobile: 1 tarjeta
+        if (w < 1024) return 2;     // md: 2 tarjetas
+        return 3;                   // lg+: 3 tarjetas
+    }
+
+    document.querySelectorAll(".proposals-carousel").forEach(function (carouselEl) {
+        const group = carouselEl.getAttribute("data-carousel");
+        const items = Array.from(carouselEl.querySelectorAll(".proposal-item"));
+        const prevBtn = document.querySelector('[data-carousel-prev="' + group + '"]');
+        const nextBtn = document.querySelector('[data-carousel-next="' + group + '"]');
+
+        let startIndex = 0;
+        let visibleCount = getVisibleCount();
+
+        function render() {
+            visibleCount = getVisibleCount();
+
+            // Si cambié de tamaño y el startIndex quedó muy alto, lo ajusto
+            if (startIndex + visibleCount > items.length) {
+                startIndex = Math.max(0, items.length - visibleCount);
             }
-        });
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
+            items.forEach(function (item, index) {
+                if (index >= startIndex && index < startIndex + visibleCount) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
                 }
             });
-        }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98ebde01a4de9b12',t:'MTc2MDQ5NTE0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+            if (prevBtn) {
+                prevBtn.disabled = startIndex === 0;
+            }
+            if (nextBtn) {
+                prevBtn && (nextBtn.disabled = startIndex + visibleCount >= items.length);
+            }
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener("click", function () {
+                if (startIndex > 0) {
+                    startIndex -= visibleCount;
+                    if (startIndex < 0) startIndex = 0;
+                    render();
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", function () {
+                if (startIndex + visibleCount < items.length) {
+                    startIndex += visibleCount;
+                    render();
+                }
+            });
+        }
+
+        // Recalcular al cambiar el tamaño de pantalla (girar celu, etc.)
+        window.addEventListener("resize", render);
+
+        // Inicializar
+        render();
+    });
+});
+</script>
+
+
+
+
+        <div id="calendario" class="page-section hidden">
+    <div class="bg-gray-100 py-20 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Calendario ETHNOS</h2>
+                <p class="text-lg text-ethnos-black max-w-3xl mx-auto">Mantente al día con todas nuestras actividades, cumpleaños y eventos importantes</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 transition-colors duration-300">
+                <div class="flex justify-between items-center mb-8">
+                    <button onclick="previousMonth()" class="p-3 rounded-xl bg-ethnos-blue text-white hover:opacity-90 transition-all duration-300 hover-lift shadow-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="text-center">
+                        <h3 id="current-month" class="text-3xl font-bold text-ethnos-blue mb-1"></h3>
+                        <div class="w-20 h-1 bg-gradient-to-r from-ethnos-blue to-ethnos-gray rounded-full mx-auto"></div>
+                    </div>
+                    <button onclick="nextMonth()" class="p-3 rounded-xl bg-ethnos-blue text-white hover:opacity-90 transition-all duration-300 hover-lift shadow-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-7 gap-3 mb-6">
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Lun</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mar</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Mié</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Jue</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Vie</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Sáb</div>
+                    <div class="text-center font-bold text-ethnos-blue py-3 bg-blue-50 rounded-lg">Dom</div>
+                </div>
+                
+                <div id="calendar-grid" class="grid grid-cols-7 gap-3 mb-8">
+                    </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-xl p-6 shadow-lg transition-colors duration-300">
+                <h4 class="text-xl font-bold text-ethnos-blue mb-4 text-center">Leyenda de Eventos</h4>
+                <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎂</span>
+                        <span class="text-ethnos-black">Cumpleaños</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">⚽</span>
+                        <span class="text-ethnos-black">Eventos Deportivos</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">📢</span>
+                        <span class="text-ethnos-black">Feriados</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">⛪</span>
+                        <span class="text-ethnos-black">Actividades Religiosas</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎭</span>
+                        <span class="text-ethnos-black">Culturales</span>
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        <span class="text-2xl">🎒</span>
+                        <span class="text-ethnos-black">Actividades Escolares</span>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="identidad" class="page-section hidden">
+            <div class="bg-gradient-to-br from-blue-50 to-red-50 py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">Logo e Identidad</h2>
+                        <p class="text-lg text-ethnos-black max-w-3xl mx-auto">Nuestro logo busca transmitir confianza, cercanía y credibilidad a través de colores y formas que representan unión y comunidad</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="text-center">
+                            <div class="bg-white rounded-2xl shadow-xl p-12 hover-lift text-center">
+                                <img src="assets/logo.png" alt="Logo ETHNOS" class="mx-auto h-48 w-48 mb-6 object-contain rounded-md" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+    <div>
+        <h3 class="text-2xl font-bold text-ethnos-blue mb-4">Nuestro Símbolo de Comunidad</h3>
+        <p class="text-ethnos-black mb-4">Nuestro logo representa la unión entre dos cursos o grupos y la igualdad de opiniones, todo dentro de un mismo espacio donde pasamos gran parte de nuestro día. Cada elemento representa las relaciones entre los estudiantes dentro de la institución, creando un puente para resolver problemáticas comunes.</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-blue rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-blue">Azul</p>
+            <p class="text-xs text-ethnos-black">Confianza, calma y seguridad</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-red rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-red">Bordo</p>
+            <p class="text-xs text-ethnos-black">Seriedad y madurez</p>
+        </div>
+        <div class="text-center">
+            <div class="w-16 h-16 bg-ethnos-gray rounded-full mx-auto mb-2 border-4 border-white shadow-lg"></div>
+            <p class="text-sm font-medium text-ethnos-gray">Gris</p>
+            <p class="text-xs text-ethnos-black">Neutralidad y escucha</p>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="text-2xl font-bold text-ethnos-blue mb-4">Valores que Transmite</h3>
+        <ul class="space-y-2 text-ethnos-black">
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-blue rounded-full mr-3"></span>Confianza y credibilidad</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-red rounded-full mr-3"></span>Cercanía y accesibilidad</li>
+            <li class="flex items-center"><span class="w-2 h-2 bg-ethnos-gray rounded-full mr-3"></span>Organización y profesionalismo</li>
+        </ul>
+    </div>
+    <div>
+    <h3 class="text-2xl font-bold text-ethnos-blue mb-4">
+        LEMA: “CADA VOZ CUENTA, CADA CURSO IMPORTA”
+    </h3>
+
+    <ul class="space-y-2 text-ethnos-black">
+        <li>
+            Nuestro lema por un lado 
+            <span class="font-bold text-red-600">Cada voz cuenta</span> 
+            refleja que todas las personas tienen algo valioso que aportar y queremos invitar a escuchar y valorar la diversidad de opiniones, experiencias y perspectivas dentro de una comunidad educativa.
+        </li>
+
+        <li>
+            A su vez, la segunda parte 
+            <span class="font-bold text-red-600">Cada curso importa</span> 
+            refuerza la idea de que todos los cursos contribuyen al crecimiento personal de cada persona y, sobre todo, al fortalecimiento de toda la comunidad educativa.
+        </li>
+    </ul>
+</div>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="redes" class="page-section hidden">
+            <div class="bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¡Conectate con Nosotros! 📱</h2>
+                        <p class="text-xl text-ethnos-black max-w-3xl mx-auto">Seguinos en Instagram para no perderte nada de lo que pasa en el cole. ¡Somos súper activos y siempre subimos contenido genial!</p>
+                    </div>
+
+                    <div class="mb-16">
+                        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden hover-lift">
+                            <div class="instagram-post p-8 text-white text-center">
+                                <div class="flex justify-center items-center mb-6">
+                                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mr-4">
+                                        <svg class="w-10 h-10 text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-left">
+                                        <h3 class="text-3xl font-bold">@ethnos_oficial</h3>
+                                        <p class="text-pink-100">Tu centro de estudiantes favorito ✨</p>
+                                    </div>
+                                </div>
+                                <p class="text-xl text-white mb-8 max-w-2xl mx-auto">¡Acá vas a encontrar todo lo que necesitás saber sobre eventos, propuestas y la vida estudiantil más divertida del cole!</p>
+                                <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-white text-pink-500 hover:bg-gray-100 font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift pulse-button inline-flex items-center text-lg shadow-lg">
+                                    <span class="text-2xl mr-2">📱</span>
+                                    ¡Seguinos Ya!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto">
+                        <div class="bg-white rounded-2xl shadow-xl p-8">
+                            <h4 class="text-2xl font-bold text-ethnos-blue mb-6 text-center">¿Qué vas a encontrar? 🤔</h4>
+                            <div class="space-y-6">
+                                <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 hover-lift">
+                                    <div class="flex items-center mb-3">
+                                        <span class="text-3xl mr-4">📸</span>
+                                        <div>
+                                            <h5 class="font-bold text-ethnos-blue text-lg">Fotos de Eventos</h5>
+                                            <p class="text-ethnos-black text-sm">Todos los momentos épicos del cole</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl p-6 hover-lift">
+                                    <div class="flex items-center mb-3">
+                                        <span class="text-3xl mr-4">🎉</span>
+                                        <div>
+                                            <h5 class="font-bold text-ethnos-blue text-lg">Anuncios de Actividades</h5>
+                                            <p class="text-ethnos-black text-sm">Para que no te pierdas nada divertido</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 hover-lift">
+                                    <div class="flex items-center mb-3">
+                                        <span class="text-3xl mr-4">💬</span>
+                                        <div>
+                                            <h5 class="font-bold text-ethnos-blue text-lg">Stories Divertidas</h5>
+                                            <p class="text-ethnos-black text-sm">Contenido exclusivo y súper entretenido</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-6 hover-lift">
+                                    <div class="flex items-center mb-3">
+                                        <span class="text-3xl mr-4">🏆</span>
+                                        <div>
+                                            <h5 class="font-bold text-ethnos-blue text-lg">Resultados de Torneos</h5>
+                                            <p class="text-ethnos-black text-sm">Celebramos todos los logros juntos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-center">
+                                <button onclick="window.open('https://instagram.com/ethnos_oficial', '_blank')" class="bg-gradient-to-r from-ethnos-blue to-purple-600 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover-lift shadow-lg">
+                                    <span class="text-xl mr-2">🚀</span>
+                                    ¡Vamos al Instagram!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="bg-gradient-to-br from-yellow-50 via-red-50 to-pink-50 py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold text-ethnos-blue mb-6">¡Contenido Extra! 🎉</h2>
+                        <p class="text-xl text-ethnos-black max-w-3xl mx-auto">Acá encontrás todo lo que no te podés perder: fotos, videos, logros y mucho más contenido genial de ETHNOS</p>
+                    </div>
+
+                    <div class="mb-16">
+                        <div class="bg-white rounded-3xl shadow-xl p-8 mb-12">
+                            <h3 class="text-3xl font-bold text-ethnos-blue text-center mb-8">📸 Galería de Momentos Épicos</h3>
+                            <p class="text-center text-ethnos-black mb-8">Los mejores momentos del cole capturados para siempre</p>
+                            
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('torneo-voley')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">🏐</span>
+                                        <p class="font-bold text-lg">Torneo de Voley 2024</p>
+                                        <p class="text-blue-100 text-sm">¡Qué partidazos!</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('semana-cultural')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">🎭</span>
+                                        <p class="font-bold text-lg">Semana Cultural</p>
+                                        <p class="text-purple-100 text-sm">Arte y creatividad</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('huerta')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">🌱</span>
+                                        <p class="font-bold text-lg">Huerta Escolar</p>
+                                        <p class="text-green-100 text-sm">Cuidando el planeta</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('dia-estudiante')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">🎉</span>
+                                        <p class="font-bold text-lg">Día del Estudiante</p>
+                                        <p class="text-red-100 text-sm">¡Pura diversión!</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('feria-libro')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">📚</span>
+                                        <p class="font-bold text-lg">Feria del Libro</p>
+                                        <p class="text-red-100 text-sm">Amor por la lectura</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl h-48 flex items-center justify-center text-white hover-lift cursor-pointer transform transition-all duration-300 hover:scale-105" onclick="showEventDetails('cine')">
+                                    <div class="text-center">
+                                        <span class="text-5xl mb-3 block">🎬</span>
+                                        <p class="font-bold text-lg">Cine Escolar</p>
+                                        <p class="text-pink-100 text-sm">Noches de película</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-16">
+                        <div class="bg-gradient-to-br from-ethnos-blue to-purple-600 rounded-3xl shadow-xl p-8 text-white">
+                            <h3 class="text-3xl font-bold text-center mb-8">🚀 ¡Se Viene lo Mejor!</h3>
+                            <p class="text-center text-blue-100 mb-8">Eventos que no te podés perder en los próximos meses</p>
+                            
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="bg-white bg-opacity-20 rounded-xl p-6 hover-lift">
+                                    <span class="text-4xl mb-3 block">🎪</span>
+                                    <h4 class="font-bold text-lg mb-2">Festival de Talentos</h4>
+                                    <p class="text-blue-100 text-sm mb-2">Marzo 2025</p>
+                                    <p class="text-blue-100 text-sm">¡Mostrá tu talento al cole!</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-xl p-6 hover-lift">
+                                    <span class="text-4xl mb-3 block">🏃‍♂️</span>
+                                    <h4 class="font-bold text-lg mb-2">Maratón Solidaria</h4>
+                                    <p class="text-blue-100 text-sm mb-2">Abril 2025</p>
+                                    <p class="text-blue-100 text-sm">Corremos por una buena causa</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-xl p-6 hover-lift">
+                                    <span class="text-4xl mb-3 block">🎨</span>
+                                    <h4 class="font-bold text-lg mb-2">Expo Arte Joven</h4>
+                                    <p class="text-blue-100 text-sm mb-2">Mayo 2025</p>
+                                    <p class="text-blue-100 text-sm">Expresá tu creatividad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+            <script src="script.js"></script>
+        </div>
+    </body>
 </html>
